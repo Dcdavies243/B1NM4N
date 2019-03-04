@@ -9,7 +9,7 @@
 
 PlayerTop::PlayerTop()
 	: MovingObject() //Initialise base class
-	, m_position(0.0f, 0.0f)
+	, m_positionTop(0.0f, 0.0f)
 	, m_level(nullptr)
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/PlayerPlacehold(B&T).png"));
@@ -24,18 +24,15 @@ PlayerTop::PlayerTop()
 void PlayerTop::Update(sf::Time _frameTime)
 {
 	//Get current X and Y position
-	m_position = m_sprite.getPosition();
+	m_positionTop = m_sprite.getPosition();
+
+	//Set X position to mirror bottom half
+
 
 	//Assume no keys are pressed
 	m_velocity.x = 0.0f;
 	m_velocity.y = 0.0f;
 
-
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-	{
-		m_sprite.setPosition(m_position.x, m_position.y - 50.0f);
-	}
 	
 
 	//TODO: Create gravity effect

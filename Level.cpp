@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Floor.h"
 #include "PlayerTop.h"
+#include "FanPickup.h"
 
 
 //Library Includes
@@ -172,6 +173,15 @@ void Level::LoadLevel(int _leveltoLoad)
 			m_WorldList.push_back(aFloor);
 			m_collisionList.push_back(std::make_pair(aFloor, aPlayer));
 			m_collisionList.push_back(std::make_pair(aFloor, aPlayerTop));
+		}
+		else if (ch == 'I')
+		{
+			FanPickup* aFanPickup = new FanPickup();
+			aFanPickup->SetPosition(x, y);
+			m_updateList.push_back(aFanPickup);
+			m_WorldList.push_back(aFanPickup);
+			m_collisionList.push_back(std::make_pair(aFanPickup, aPlayer));
+			m_collisionList.push_back(std::make_pair(aFanPickup, aPlayerTop));
 		}
 		else if (ch == '-')
 		{

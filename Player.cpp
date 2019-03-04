@@ -1,5 +1,6 @@
 //Project Includes
 #include "Player.h"
+#include "PlayerTop.h"
 #include "Framework/AssetManager.h"
 #include "Floor.h"
 
@@ -37,6 +38,8 @@ void Player::Update(sf::Time _frameTime)
 	}
 
 
+
+
 	//TODO: Create gravity effect
 
 
@@ -48,6 +51,12 @@ void Player::Update(sf::Time _frameTime)
 
 }
 
+
+void Player::FollowTop()
+{
+
+}
+
 void Player::CollideWall()
 {
 	
@@ -55,6 +64,15 @@ void Player::CollideWall()
 
 }
 
+bool Player::HasFan()
+{
+	return m_fan;
+}
+
+void Player::CollectFan()
+{
+	m_fan = true;
+}
 
 void Player::Kill()
 {
