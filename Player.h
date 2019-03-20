@@ -17,7 +17,10 @@ public:
 	Player();
 
 	//Overriding Methods
+	virtual sf::Vector2f GetPosition();
+	virtual void SetPosition(float _x, float _y);
 	virtual void SetPosition(sf::Vector2f _position);
+
 	virtual void Draw(sf::RenderTarget& _target);
 	void Update(sf::Time _frameTime);
 	virtual void CollideWall();

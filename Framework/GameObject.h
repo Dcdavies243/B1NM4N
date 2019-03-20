@@ -20,7 +20,7 @@ public:
 	virtual void Collide(GameObject& _collider);
 
 	virtual void SetPosition(sf::Vector2f _position);
-	virtual void SetPositionGrid(float _x, float _y);
+	virtual void SetPosition(float _x, float _y);
 	virtual sf::Vector2f GetPosition();
 
 	bool IsActive();

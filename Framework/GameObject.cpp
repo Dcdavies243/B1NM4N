@@ -37,7 +37,7 @@ void GameObject::SetPosition(sf::Vector2f _position)
 
 }
 
-void GameObject::SetPositionGrid(float _x, float _y)
+void GameObject::SetPosition(float _x, float _y)
 {
 
 }

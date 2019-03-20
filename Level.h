@@ -22,8 +22,6 @@ private:
 	//GameObject Lists
 	int m_currentLevel;
 	GameObject* m_player;
-	GameObject* m_playerTop;
-	GameObject* m_playerBottom;
 	
 
 	std::vector<GameObject*> m_updateList;

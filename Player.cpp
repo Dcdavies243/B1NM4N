@@ -17,6 +17,10 @@ Player::Player()
 	, m_offset(0, 50.0f)
 {
 
+	//TODO: Set up head and body
+	m_top = new PlayerTop();
+	m_bottom = new PlayerBottom();
+
 	//TODO: Set up the animation
 
 	//TODO: Create individual animations
@@ -50,8 +54,17 @@ void Player::Update(sf::Time _frameTime)
 	//Call the update function manually on the parent class
 	//This actually moves the character
 	MovingObject::Update(_frameTime);
-
 	//TODO: Process animations
+
+}
+
+sf::Vector2f Player::GetPosition()
+{
+	return m_bottom->GetPosition();
+}
+
+void Player::SetPosition(float _x, float _y)
+{
 
 }
 
@@ -63,10 +76,8 @@ void Player::SetPosition(sf::Vector2f _position)
 
 void Player::Draw(sf::RenderTarget& _target)
 {
-	if (m_top != nullptr)
 	m_top->Draw(_target);
 
-	if (m_bottom != nullptr)
 	m_bottom->Draw(_target);
 }
 

@@ -17,8 +17,3 @@ PlayerTop::PlayerTop()
 	//TODO: Create individual animations
 
 }
-
-void PlayerTop::SetPosition(sf::Vector2f _position)
-{
-
-}

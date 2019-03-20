@@ -12,7 +12,7 @@ MovingObject::MovingObject()
 void MovingObject::Update(sf::Time _frameTime)
 {
 	//Get the current position
-	sf::Vector2f currentPosition = m_sprite.getPosition();
+	sf::Vector2f currentPosition = GetPosition();
 
 	//Calculate the amount moved
 	sf::Vector2f amountMoved = m_velocity * _frameTime.asSeconds();
@@ -21,7 +21,7 @@ void MovingObject::Update(sf::Time _frameTime)
 	sf::Vector2f newPosition = currentPosition + amountMoved;
 
 	// Set our sprite to this new position
-	m_sprite.setPosition(newPosition);
+	SetPosition(newPosition);
 
 	//Record our current position as previous position
 	m_previousPosition = currentPosition;

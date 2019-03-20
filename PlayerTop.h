@@ -12,7 +12,6 @@ public:
 	PlayerTop();
 
 	//Overriding Methods
-	virtual void SetPosition(sf::Vector2f _position);
 
 private:
 

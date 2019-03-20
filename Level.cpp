@@ -14,8 +14,6 @@
 Level::Level()
 	: m_currentLevel(0)
 	, m_player(nullptr)
-	, m_playerTop(nullptr)
-	, m_playerBottom(nullptr)
 	, m_updateList()
 	, m_WorldList()
 	, m_UIList()
@@ -130,9 +128,6 @@ void Level::LoadLevel(int _leveltoLoad)
 	Player* aPlayer = new Player();
 	m_player = aPlayer;
 
-	PlayerTop* aPlayerTop = new PlayerTop();
-	m_playerTop = aPlayerTop;
-
 	//Read each character one by one from the file..
 	char ch;
 
@@ -155,7 +150,7 @@ void Level::LoadLevel(int _leveltoLoad)
 		}
 		else if (ch == 'P')
 		{
-			aPlayer->SetPositionGrid(x, y);
+			aPlayer->SetPosition(x, y);
 			aPlayer->SetLevel(this);
 			m_updateList.push_back(aPlayer);
 			m_WorldList.push_back(aPlayer);
