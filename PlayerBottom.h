@@ -5,14 +5,14 @@
 #include "Framework/AnimationSystem.h"
 #include "Player.h"
 
-class PlayerTop : public GameObject
+class PlayerBottom : public GameObject
 {
 public:
 
-	PlayerTop();
+	PlayerBottom();
 
 	//Overriding Methods
-	virtual void SetPosition(sf::Vector2f _position);
+
 
 private:
 

@@ -28,12 +28,4 @@ void Floor::Collide(GameObject& _collider)
 
 	PlayerTop* castPlayerTop = dynamic_cast<PlayerTop*>(&_collider);
 
-	//Only do something if the thing we touched was the player
-	if (castPlayerTop != nullptr)
-	{
-		//We are touched by the player
-
-		//Kill them (TODO)
-		castPlayerTop->CollideWall();
-	}
 }

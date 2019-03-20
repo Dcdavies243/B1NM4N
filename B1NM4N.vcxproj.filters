@@ -62,6 +62,12 @@
     <ClCompile Include="Pickup.cpp">
       <Filter>GameCode</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerBottom.cpp">
+      <Filter>GameCode</Filter>
+    </ClCompile>
+    <ClCompile Include="TreatsPickup.cpp">
+      <Filter>GameCode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Animation.h">
@@ -101,6 +107,12 @@
       <Filter>GameCode</Filter>
     </ClInclude>
     <ClInclude Include="Pickup.h">
+      <Filter>GameCode</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerBottom.h">
+      <Filter>GameCode</Filter>
+    </ClInclude>
+    <ClInclude Include="TreatsPickup.h">
       <Filter>GameCode</Filter>
     </ClInclude>
   </ItemGroup>

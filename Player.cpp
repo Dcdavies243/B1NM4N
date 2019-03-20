@@ -3,6 +3,8 @@
 #include "PlayerTop.h"
 #include "Framework/AssetManager.h"
 #include "Floor.h"
+#include "PlayerTop.h"
+#include "PlayerBottom.h"
 
 //Constants
 #define SPEED 200.0f
@@ -10,8 +12,10 @@
 Player::Player()
 	: MovingObject() //Initialise base class
 	, m_level(nullptr)
+	, m_top(nullptr)
+	, m_bottom(nullptr)
+	, m_offset(0, 50.0f)
 {
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/PlayerPlacehold(B&T).png"));
 
 	//TODO: Set up the animation
 
@@ -51,10 +55,19 @@ void Player::Update(sf::Time _frameTime)
 
 }
 
-
-void Player::FollowTop()
+void Player::SetPosition(sf::Vector2f _position)
 {
+	m_top->SetPosition(m_position - m_offset);
+	m_bottom->SetPosition(m_position);
+}
 
+void Player::Draw(sf::RenderTarget& _target)
+{
+	if (m_top != nullptr)
+	m_top->Draw(_target);
+
+	if (m_bottom != nullptr)
+	m_bottom->Draw(_target);
 }
 
 void Player::CollideWall()
@@ -72,6 +85,11 @@ bool Player::HasFan()
 void Player::CollectFan()
 {
 	m_fan = true;
+}
+
+void Player::CollectTreats()
+{
+	m_treats = true;
 }
 
 void Player::Kill()

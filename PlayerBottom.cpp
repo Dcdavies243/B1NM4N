@@ -1,13 +1,12 @@
-//Project Includes
-#include "PlayerTop.h"
 #include "Player.h"
 #include "Framework/AssetManager.h"
 #include "Floor.h"
+#include "PlayerBottom.h"
 
 //Constants
 #define SPEED 200.0f
 
-PlayerTop::PlayerTop()
+PlayerBottom::PlayerBottom()
 	: GameObject() //Initialise base class
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/PlayerPlacehold(B&T).png"));
@@ -15,10 +14,5 @@ PlayerTop::PlayerTop()
 	//TODO: Set up the animation
 
 	//TODO: Create individual animations
-
-}
-
-void PlayerTop::SetPosition(sf::Vector2f _position)
-{
 
 }

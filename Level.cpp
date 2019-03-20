@@ -4,6 +4,7 @@
 #include "Floor.h"
 #include "PlayerTop.h"
 #include "FanPickup.h"
+#include "TreatsPickup.h"
 
 
 //Library Includes
@@ -14,6 +15,7 @@ Level::Level()
 	: m_currentLevel(0)
 	, m_player(nullptr)
 	, m_playerTop(nullptr)
+	, m_playerBottom(nullptr)
 	, m_updateList()
 	, m_WorldList()
 	, m_UIList()
@@ -153,17 +155,10 @@ void Level::LoadLevel(int _leveltoLoad)
 		}
 		else if (ch == 'P')
 		{
-			aPlayer->SetPosition(x, y);
+			aPlayer->SetPositionGrid(x, y);
 			aPlayer->SetLevel(this);
 			m_updateList.push_back(aPlayer);
 			m_WorldList.push_back(aPlayer);
-		}
-		else if (ch == 'T')
-		{
-			aPlayerTop->SetPosition(x, y);
-			aPlayerTop->SetLevel(this);
-			m_updateList.push_back(aPlayerTop);
-			m_WorldList.push_back(aPlayerTop);
 		}
 		else if (ch == 'F')
 		{
@@ -172,7 +167,6 @@ void Level::LoadLevel(int _leveltoLoad)
 			m_updateList.push_back(aFloor);
 			m_WorldList.push_back(aFloor);
 			m_collisionList.push_back(std::make_pair(aFloor, aPlayer));
-			m_collisionList.push_back(std::make_pair(aFloor, aPlayerTop));
 		}
 		else if (ch == 'I')
 		{
@@ -181,7 +175,14 @@ void Level::LoadLevel(int _leveltoLoad)
 			m_updateList.push_back(aFanPickup);
 			m_WorldList.push_back(aFanPickup);
 			m_collisionList.push_back(std::make_pair(aFanPickup, aPlayer));
-			m_collisionList.push_back(std::make_pair(aFanPickup, aPlayerTop));
+		}
+		else if (ch == 'O')
+		{
+			TreatsPickup* aTreatPickup = new TreatsPickup();
+			aTreatPickup->SetPosition(x, y);
+			m_updateList.push_back(aTreatPickup);
+			m_WorldList.push_back(aTreatPickup);
+			m_collisionList.push_back(std::make_pair(aTreatPickup, aPlayer));
 		}
 		else if (ch == '-')
 		{
