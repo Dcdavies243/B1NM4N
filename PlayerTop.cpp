@@ -8,7 +8,7 @@
 #define SPEED 200.0f
 
 PlayerTop::PlayerTop()
-	: GameObject() //Initialise base class
+	: SpriteObject() //Initialise base class
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/PlayerPlacehold(B&T).png"));
 

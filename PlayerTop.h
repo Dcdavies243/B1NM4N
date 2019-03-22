@@ -1,11 +1,11 @@
 #pragma once
 
 //Project Includes
-#include "Framework/GameObject.h"
+#include "Framework/SpriteObject.h"
 #include "Framework/AnimationSystem.h"
 #include "Player.h"
 
-class PlayerTop : public GameObject
+class PlayerTop : public SpriteObject
 {
 public:
 

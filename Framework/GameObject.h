@@ -29,5 +29,4 @@ protected:
 
 	bool m_active;
 	bool m_blocksMovement;
-	sf::Sprite m_sprite;
 };

@@ -65,13 +65,14 @@ sf::Vector2f Player::GetPosition()
 
 void Player::SetPosition(float _x, float _y)
 {
-
+	SetPosition(sf::Vector2f(_x,_y));
 }
 
 void Player::SetPosition(sf::Vector2f _position)
 {
-	m_top->SetPosition(m_position - m_offset);
-	m_bottom->SetPosition(m_position);
+	m_position = _position;
+	m_top->SetPosition(_position - m_offset);
+	m_bottom->SetPosition(_position);
 }
 
 void Player::Draw(sf::RenderTarget& _target)
