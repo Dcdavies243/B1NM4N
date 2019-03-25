@@ -1,10 +1,12 @@
 //Project Includes
 #include "Level.h"
 #include "Player.h"
-#include "Floor.h"
 #include "PlayerTop.h"
+#include "PlayerBottom.h"
+#include "Floor.h"
 #include "FanPickup.h"
 #include "TreatsPickup.h"
+#include "B1NM3N.h"
 
 
 //Library Includes
@@ -154,6 +156,14 @@ void Level::LoadLevel(int _leveltoLoad)
 			aPlayer->SetLevel(this);
 			m_updateList.push_back(aPlayer);
 			m_WorldList.push_back(aPlayer);
+		}
+		else if (ch == 'B')
+		{
+			B1NM3N* aB1NM3N = new B1NM3N();
+			aB1NM3N->SetPosition(x, y);
+			m_updateList.push_back(aB1NM3N);
+			m_WorldList.push_back(aB1NM3N);
+			m_collisionList.push_back(std::make_pair(aB1NM3N, aPlayer));
 		}
 		else if (ch == 'F')
 		{

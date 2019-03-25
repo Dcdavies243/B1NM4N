@@ -23,9 +23,11 @@ public:
 
 	virtual void Draw(sf::RenderTarget& _target);
 	void Update(sf::Time _frameTime);
-	virtual void CollideWall();
+	void Input();
+
 
 	//Public Player Methods
+	virtual void Collide(GameObject& _collider);
 	bool HasFan();
 	void CollectFan();
 	void CollectTreats();
