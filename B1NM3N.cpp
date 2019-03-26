@@ -10,10 +10,8 @@ B1NM3N::B1NM3N()
 	: MovingObject() //Initialise base class
 	, gameTime()
 	, m_position()
-	, m_startPosition(m_position)
-	, m_endPosition()
-	, pointA()
-	, pointB()
+	, pointA(sf::Vector2f(100, 0))
+	, pointB(sf::Vector2f(-100, 0))
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/GroundPlacehold.png"));
 }
@@ -21,7 +19,8 @@ B1NM3N::B1NM3N()
 void B1NM3N::Update(sf::Time _frameTime)
 {
 
-	
+	factor += (0.1 * _frameTime.asSeconds());
+	SetPosition(Interpolate(pointA, pointB, factor));
 
 }
 

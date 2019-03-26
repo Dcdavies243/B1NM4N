@@ -20,13 +20,12 @@ public:
 
 private:
 
-	sf::Time gameTime;
+	float gameTime;
 
-	sf::Vector2f m_startPosition;
-	sf::Vector2f m_endPosition;
 	sf::Vector2f m_position;
 
 	float factor = 0.f;
-	sf::Vector2f pointA = m_startPosition + sf::Vector2f(100, 0), pointB = m_startPosition - sf::Vector2f(100, 0);
+	sf::Vector2f pointA;
+	sf::Vector2f pointB;
 
 };
