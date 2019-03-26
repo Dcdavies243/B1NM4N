@@ -5,11 +5,11 @@
 #include "Framework/AnimationSystem.h"
 #include "Level.h"
 
-class B1NM3N : public MovingObject
+class Dog : public MovingObject
 {
 
 public:
-	B1NM3N();
+	Dog();
 
 	//Overriding Methods
 	void Update(sf::Time _frameTime);
@@ -17,14 +17,17 @@ public:
 	virtual void SetPosition(sf::Vector2f _position);
 
 	//Class Methods
-	sf::Vector2f Interpolate(const sf::Vector2f pointA,	const sf::Vector2f pointB, float factor);
+	sf::Vector2f Interpolate(const sf::Vector2f pointA, const sf::Vector2f pointB, float factor);
 	virtual void MoveEnemy(sf::Time _frameTime);
+	sf::Vector2f FindTarget(GameObject& _collider);
 	virtual void SetPatrol();
 
 
 private:
 
+
 	sf::Vector2f m_position;
+	sf::Vector2f m_playerPos;
 
 	float speed;
 	float factor = 0.f;

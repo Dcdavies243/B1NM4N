@@ -15,6 +15,7 @@ Player::Player()
 	, m_level(nullptr)
 	, m_top(nullptr)
 	, m_bottom(nullptr)
+	, m_position()
 	, m_offset(0, 50.0f)
 {
 
@@ -92,6 +93,8 @@ void Player::Input()
 sf::Vector2f Player::GetPosition()
 {
 	return m_bottom->GetPosition();
+
+	m_position = m_bottom->GetPosition();
 }
 
 void Player::SetPosition(float _x, float _y)

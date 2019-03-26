@@ -1,12 +1,10 @@
 //Project Includes
 #include "Framework/AssetManager.h"
-#include "B1NM3N.h"
+#include "Dog.h"
+#include "Player.h"
 
 
-//Constants
-#define SPEED 200.0f
-
-B1NM3N::B1NM3N()
+Dog::Dog()
 	: MovingObject() //Initialise base class
 	, m_position()
 	, pointA()
@@ -15,42 +13,46 @@ B1NM3N::B1NM3N()
 {
 
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/EnemyPlacehold.png"));
-
 }
 
-void B1NM3N::SetPosition(sf::Vector2f _position)
+void Dog::SetPosition(sf::Vector2f _position)
 {
 	m_sprite.setPosition(_position);
 }
 
-void B1NM3N::SetPosition(float _x, float _y)
+void Dog::SetPosition(float _x, float _y)
 {
 	m_sprite.setPosition(_x, _y);
 }
 
-void B1NM3N::Update(sf::Time _frameTime)
+void Dog::Update(sf::Time _frameTime)
 {
 	m_position = m_sprite.getPosition();
 
+	//FindTarget();
 	MoveEnemy(_frameTime);
-	
-}
-
-void B1NM3N::SetPatrol()
-{
-
-	pointA = m_sprite.getPosition() + sf::Vector2f(300, 0);
-	pointB = m_sprite.getPosition();
 
 }
 
-void B1NM3N::MoveEnemy(sf::Time _frameTime)
+void Dog::SetPatrol()
 {
 
-	if (m_sprite.getPosition() == pointB)
-		speed = -0.3;
-	if (m_sprite.getPosition() == pointA)
-		speed = 0.3;
+	pointA = m_sprite.getPosition();
+	pointB = m_playerPos;
+
+}
+
+sf::Vector2f Dog::FindTarget(GameObject& _position)
+{
+	Player* playerPos = dynamic_cast<Player*>(&_position);
+
+	m_playerPos = playerPos->GetPosition();
+
+	return m_playerPos;
+}
+
+void Dog::MoveEnemy(sf::Time _frameTime)
+{
 
 	factor += (speed * _frameTime.asSeconds());
 
@@ -59,7 +61,7 @@ void B1NM3N::MoveEnemy(sf::Time _frameTime)
 }
 
 
-sf::Vector2f B1NM3N::Interpolate(const sf::Vector2f pointA, const sf::Vector2f pointB, float factor)
+sf::Vector2f Dog::Interpolate(const sf::Vector2f pointA, const sf::Vector2f pointB, float factor)
 {
 
 	if (factor > 1.0f)
