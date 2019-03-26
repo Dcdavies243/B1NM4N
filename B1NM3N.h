@@ -14,11 +14,19 @@ public:
 	//Overriding Methods
 	void Update(sf::Time _frameTime);
 
+	//Class Methods
+	sf::Vector2f Interpolate(const sf::Vector2f pointA,	const sf::Vector2f pointB, float factor);
+
 
 private:
+
+	sf::Time gameTime;
 
 	sf::Vector2f m_startPosition;
 	sf::Vector2f m_endPosition;
 	sf::Vector2f m_position;
+
+	float factor = 0.f;
+	sf::Vector2f pointA = m_startPosition + sf::Vector2f(100, 0), pointB = m_startPosition - sf::Vector2f(100, 0);
 
 };
