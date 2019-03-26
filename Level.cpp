@@ -161,6 +161,7 @@ void Level::LoadLevel(int _leveltoLoad)
 		{
 			B1NM3N* aB1NM3N = new B1NM3N();
 			aB1NM3N->SetPosition(x, y);
+			aB1NM3N->SetPatrol();
 			m_updateList.push_back(aB1NM3N);
 			m_WorldList.push_back(aB1NM3N);
 			m_collisionList.push_back(std::make_pair(aB1NM3N, aPlayer));
