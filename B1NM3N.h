@@ -24,11 +24,11 @@ public:
 
 private:
 
+	bool turned;
+
 	sf::Vector2f m_position;
 
-	float speed;
 	float factor = 0.f;
-
 	sf::Vector2f pointA;
 	sf::Vector2f pointB;
 

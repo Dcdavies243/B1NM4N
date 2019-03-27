@@ -7,7 +7,6 @@
 #include "FanPickup.h"
 #include "TreatsPickup.h"
 #include "B1NM3N.h"
-#include "Dog.h"
 
 
 //Library Includes
@@ -166,15 +165,6 @@ void Level::LoadLevel(int _leveltoLoad)
 			m_updateList.push_back(aB1NM3N);
 			m_WorldList.push_back(aB1NM3N);
 			m_collisionList.push_back(std::make_pair(aB1NM3N, aPlayer));
-		}
-		else if (ch == 'D')
-		{
-			Dog* aDog = new Dog();
-			aDog->SetPosition(x, y);
-			aDog->SetPatrol();
-			m_updateList.push_back(aDog);
-			m_WorldList.push_back(aDog);
-			m_collisionList.push_back(std::make_pair(aDog, aPlayer));
 		}
 		else if (ch == 'F')
 		{
