@@ -23,7 +23,11 @@
     <ProjectGuid>{c2523a04-c1d6-4a70-a2c6-299cf83e42a9}</ProjectGuid>
     <RootNamespace>B1NM4N</RootNamespace>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+=======
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+>>>>>>> parent of a0edb20... Completed B1NM3N enemy
 =======
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
 >>>>>>> parent of a0edb20... Completed B1NM3N enemy
