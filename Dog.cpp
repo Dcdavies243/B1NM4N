@@ -7,6 +7,7 @@
 Dog::Dog()
 	: MovingObject() //Initialise base class
 	, m_position()
+	, m_playerPos()
 	, pointA()
 	, pointB()
 	, speed(0.3)
@@ -25,13 +26,13 @@ void Dog::SetPosition(float _x, float _y)
 	m_sprite.setPosition(_x, _y);
 }
 
-void Dog::Update(sf::Time _frameTime)
+void Dog::Update(sf::Time _frameTime, GameObject& _position)
 {
 	m_position = m_sprite.getPosition();
 
 	//FindTarget();
 	MoveEnemy(_frameTime);
-
+	FindTarget(_position);
 }
 
 void Dog::SetPatrol()
