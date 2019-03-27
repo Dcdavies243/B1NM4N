@@ -8,6 +8,7 @@ Pickup::Pickup()
 
 }
 
+
 void Pickup::Collide(GameObject& _collider)
 {
 	// Only do something if the thing
@@ -31,6 +32,7 @@ void Pickup::Collide(GameObject& _collider)
 	}
 
 }
+
 
 void Pickup::OnPickup(Player& _player)
 {

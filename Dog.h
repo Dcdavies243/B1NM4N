@@ -17,9 +17,8 @@ public:
 	virtual void SetPosition(sf::Vector2f _position);
 
 	//Class Methods
-	sf::Vector2f Interpolate(const sf::Vector2f pointA, const sf::Vector2f pointB, float factor);
 	virtual void MoveEnemy(sf::Time _frameTime);
-	virtual void SetPatrol(sf::Vector2f _position);
+	virtual void GetTarget();
 
 
 private:
@@ -30,8 +29,5 @@ private:
 
 	float speed;
 	float factor = 0.f;
-
-	sf::Vector2f pointA;
-	sf::Vector2f pointB;
 
 };

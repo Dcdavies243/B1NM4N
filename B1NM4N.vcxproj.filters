@@ -71,6 +71,9 @@
     <ClCompile Include="B1NM3N.cpp">
       <Filter>GameCode</Filter>
     </ClCompile>
+    <ClCompile Include="Dog.cpp">
+      <Filter>GameCode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Animation.h">
@@ -119,6 +122,9 @@
       <Filter>GameCode</Filter>
     </ClInclude>
     <ClInclude Include="B1NM3N.h">
+      <Filter>GameCode</Filter>
+    </ClInclude>
+    <ClInclude Include="Dog.h">
       <Filter>GameCode</Filter>
     </ClInclude>
   </ItemGroup>

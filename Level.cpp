@@ -1,3 +1,4 @@
+
 //Project Includes
 #include "Level.h"
 #include "Player.h"
@@ -164,7 +165,7 @@ void Level::LoadLevel(int _leveltoLoad)
 			aB1NM3N->SetPatrol();
 			m_updateList.push_back(aB1NM3N);
 			m_WorldList.push_back(aB1NM3N);
-			m_collisionList.push_back(std::make_pair(aB1NM3N, aPlayer));
+			m_collisionList.push_back(std::make_pair(aPlayer, aB1NM3N));
 		}
 		else if (ch == 'F')
 		{
@@ -172,7 +173,7 @@ void Level::LoadLevel(int _leveltoLoad)
 			aFloor->SetPosition(x, y);
 			m_updateList.push_back(aFloor);
 			m_WorldList.push_back(aFloor);
-			m_collisionList.push_back(std::make_pair(aFloor, aPlayer));
+			m_collisionList.push_back(std::make_pair(aPlayer, aFloor));
 		}
 		else if (ch == 'I')
 		{

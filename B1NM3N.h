@@ -15,6 +15,7 @@ public:
 	void Update(sf::Time _frameTime);
 	virtual void SetPosition(float _x, float _y);
 	virtual void SetPosition(sf::Vector2f _position);
+	sf::FloatRect GetBounds();
 
 	//Class Methods
 	sf::Vector2f Interpolate(const sf::Vector2f pointA,	const sf::Vector2f pointB, float factor);
@@ -29,6 +30,7 @@ private:
 	sf::Vector2f m_position;
 
 	float factor = 0.f;
+	float speed;
 	sf::Vector2f pointA;
 	sf::Vector2f pointB;
 

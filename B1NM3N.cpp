@@ -10,11 +10,12 @@ B1NM3N::B1NM3N()
 	: MovingObject() //Initialise base class
 	, turned(false)
 	, m_position()
+	, speed(0.3f)
 	, pointA()
 	, pointB()
 {
 
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/GroundPlacehold.png"));
+	m_sprite.setTexture(AssetManager::GetTexture("graphics/EnemyPlacehold.png"));
 
 }
 
@@ -26,6 +27,11 @@ void B1NM3N::SetPosition(sf::Vector2f _position)
 void B1NM3N::SetPosition(float _x, float _y)
 {
 	m_sprite.setPosition(_x, _y);
+}
+
+sf::FloatRect B1NM3N::GetBounds()
+{
+	return m_sprite.getGlobalBounds();
 }
 
 void B1NM3N::Update(sf::Time _frameTime)
@@ -41,12 +47,16 @@ void B1NM3N::SetPatrol()
 
 void B1NM3N::MoveEnemy(sf::Time _frameTime)
 {
-	factor += (0.2 * _frameTime.asSeconds());
+	if (m_sprite.getPosition() == pointB)
+		speed = -0.3;
+	if (m_sprite.getPosition() == pointA)
+		speed = 0.3;
 
-	if (!turned)
+	factor += (speed * _frameTime.asSeconds());
+
+
 	SetPosition(Interpolate(pointA, pointB, factor));
-	else
-	SetPosition(Interpolate(pointB, pointA, factor));
+
 
 }
 
@@ -65,12 +75,6 @@ sf::Vector2f B1NM3N::Interpolate(const sf::Vector2f pointA, const sf::Vector2f p
 	}
 
 
-	if (!turned)
-	{
-		return pointA + (pointB - pointA) * factor;
-	}
-	else
-	{
-		return pointB + (pointA - pointB) * factor;
-	}
+	return pointA + (pointB - pointA) * factor;
+
 }

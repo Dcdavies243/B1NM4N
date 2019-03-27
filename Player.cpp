@@ -5,6 +5,8 @@
 #include "Floor.h"
 #include "PlayerTop.h"
 #include "PlayerBottom.h"
+#include "B1NM3N.h"
+
 
 //Constants
 #define SPEED 200.0f
@@ -14,9 +16,13 @@ Player::Player()
 	: MovingObject() //Initialise base class
 	, m_level(nullptr)
 	, m_top(nullptr)
+	, bb_top()
 	, m_bottom(nullptr)
 	, m_offset(0, 50.0f)
+	, bb_bottom()
 {
+
+	m_sprite.setTexture(AssetManager::GetTexture("graphics/GroundPlacehold.png"));
 
 	//TODO: Set up head and body
 	m_top = new PlayerTop();
@@ -54,7 +60,7 @@ void Player::Input()
 	{
 		if (m_offset.y < 150)
 		{
-			m_offset.y = m_offset.y - (-SPEED / 400);
+			m_offset.y = m_offset.y - (-SPEED / 600);
 		}
 
 		if (m_offset.y > 150)
@@ -67,13 +73,10 @@ void Player::Input()
 	{
 		if (m_offset.y > 50)
 		{
-			m_offset.y = m_offset.y - (SPEED / 400);
+			m_offset.y = m_offset.y - (SPEED / 600);
 		}
 
-		if (m_offset.y < 50)
-		{
-			m_offset.y = -50;
-		}
+
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
@@ -113,31 +116,26 @@ void Player::Draw(sf::RenderTarget& _target)
 	m_bottom->Draw(_target);
 }
 
+sf::FloatRect Player::GetBounds()
+{
+	return m_top->GetBounds();
+
+	return m_bottom->GetBounds();
+}
+
 void Player::Collide(GameObject& _collider)
 {
-	
-	// Only do something if the thing
-	// we touched was a wall
 
-	// Dynamic cast the GameObjec ref
-	// into a Wall pointer
-	// if it succeeds, it was a wall
-	Floor* floorCollider = dynamic_cast<Floor*>(&_collider);
+	Floor* castFloor = dynamic_cast<Floor*>(&_collider);
 
-	// If it was a wall we hit, we need to more ourselves
-	// outside the wall's bounds, aka back where we were
-	if (floorCollider != nullptr)
+	if (castFloor != nullptr)
 	{
-		// We did hit a wall!!!
+		//We hit a wall
+		//Return to previous position outside wall bounds
 
-		// Return to our previous position that we just
-		// moved away from this frame
-		
+		m_bottom->SetPosition(m_previousPosition);
 
-		// clumsy - results in "sticky" walls
-		// But good enough for this game
 	}
-
 }
 
 bool Player::HasFan()
