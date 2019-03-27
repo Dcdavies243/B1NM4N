@@ -16,14 +16,6 @@
 - - - - - - - - - - - - - - - - - - - - - - - F - - - - - - - - - - - - - - -
 - - - - - - - - - - - - - - - - - - - - - - - F - - - - - - - - - - - - - - -
 - - - - - - - - - - - - - - - - - - - - - - - F - - - - - - - - - - - - - - -
-<<<<<<< HEAD
-<<<<<<< HEAD
 - - D - - - - I - - - - - - - P - - - - - - - F - - - - B - - - - - - - - - -
-=======
-- - - - - - - I - - - - - - - P - - - - - - - F - - - - B - - - - - - - - - -
->>>>>>> parent of a0edb20... Completed B1NM3N enemy
-=======
-- - - - - - - I - - - - - - - P - - - - - - - F - - - - B - - - - - - - - - -
->>>>>>> parent of a0edb20... Completed B1NM3N enemy
 F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F
 F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F
