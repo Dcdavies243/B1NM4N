@@ -65,8 +65,9 @@ void Player::Input()
 
 		if (m_offset.y > 150)
 		{
-			m_offset.y = -50;
+			m_offset.y = 50;
 		}
+
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
@@ -75,7 +76,6 @@ void Player::Input()
 		{
 			m_offset.y = m_offset.y - (SPEED / 600);
 		}
-
 
 	}
 
@@ -136,6 +136,18 @@ void Player::Collide(GameObject& _collider)
 		m_bottom->SetPosition(m_previousPosition);
 
 	}
+
+	B1NM3N* castB1NM3N = dynamic_cast<B1NM3N*>(&_collider);
+
+	if (castB1NM3N != nullptr)
+	{
+		//We hit a wall
+		//Return to previous position outside wall bounds
+
+		Kill();
+
+	}
+	
 }
 
 bool Player::HasFan()
