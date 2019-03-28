@@ -74,6 +74,15 @@
     <ClCompile Include="Dog.cpp">
       <Filter>GameCode</Filter>
     </ClCompile>
+    <ClCompile Include="GrabberBox.cpp">
+      <Filter>GameCode</Filter>
+    </ClCompile>
+    <ClCompile Include="FanTool.cpp">
+      <Filter>GameCode</Filter>
+    </ClCompile>
+    <ClCompile Include="FanTarget.cpp">
+      <Filter>GameCode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Animation.h">
@@ -125,6 +134,15 @@
       <Filter>GameCode</Filter>
     </ClInclude>
     <ClInclude Include="Dog.h">
+      <Filter>GameCode</Filter>
+    </ClInclude>
+    <ClInclude Include="GrabberBox.h">
+      <Filter>GameCode</Filter>
+    </ClInclude>
+    <ClInclude Include="FanTool.h">
+      <Filter>GameCode</Filter>
+    </ClInclude>
+    <ClInclude Include="FanTarget.h">
       <Filter>GameCode</Filter>
     </ClInclude>
   </ItemGroup>

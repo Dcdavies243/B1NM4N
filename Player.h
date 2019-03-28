@@ -8,6 +8,8 @@
 // Forward Declaration
 class PlayerTop;
 class PlayerBottom;
+class GrabberBox;
+class FanTool;
 
 class Player : public MovingObject
 {
@@ -29,10 +31,14 @@ public:
 
 
 	//Public Player Methods
-	//virtual void Collide(GameObject& _collider);
+
+	//Pickup Methods
 	bool HasFan();
 	void CollectFan();
 	void CollectTreats();
+
+	//Tool Methods
+	void UseFan();
 
 	void Kill();
 	void SetLevel(Level* _newLevel);
@@ -41,12 +47,24 @@ public:
 
 private:
 
+	bool m_grabbing;
 	bool m_fan;
 	bool m_treats;
+	bool m_falling;
 
-	//Position and Offset for Body Top
+	//Tool variables
+	bool fanActive;
+
+
+	//Position and Offset for Body
 	sf::Vector2f m_position;
 	sf::Vector2f m_offset;
+
+	//Offset for Fan
+	sf::Vector2f fanOffset;
+
+	//Variable for grabbing position
+	sf::Vector2f m_grabposition;
 
 	//Level
 	Level* m_level;
@@ -55,9 +73,8 @@ private:
 	PlayerTop* m_top;
 	PlayerBottom* m_bottom;
 
-	//Bounding Boxes
-	sf::FloatRect bb_top;
-	sf::FloatRect bb_bottom;
+	//Tool upgrades
+	FanTool* m_fantool;
 
 	//TODO: AnimationSystem
 

@@ -126,6 +126,8 @@
     <ClCompile Include="B1NM3N.cpp" />
     <ClCompile Include="Dog.cpp" />
     <ClCompile Include="FanPickup.cpp" />
+    <ClCompile Include="FanTarget.cpp" />
+    <ClCompile Include="FanTool.cpp" />
     <ClCompile Include="Floor.cpp" />
     <ClCompile Include="Framework\Animation.cpp" />
     <ClCompile Include="Framework\AnimationSystem.cpp" />
@@ -133,6 +135,7 @@
     <ClCompile Include="Framework\GameObject.cpp" />
     <ClCompile Include="Framework\SpriteObject.cpp" />
     <ClCompile Include="Framework\TextObject.cpp" />
+    <ClCompile Include="GrabberBox.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MovingObject.cpp" />
@@ -145,6 +148,9 @@
   <ItemGroup>
     <ClInclude Include="B1NM3N.h" />
     <ClInclude Include="Dog.h" />
+    <ClInclude Include="FanTarget.h" />
+    <ClInclude Include="FanTool.h" />
+    <ClInclude Include="GrabberBox.h" />
     <ClInclude Include="TreatsPickup.h" />
     <ClInclude Include="FanPickup.h" />
     <ClInclude Include="Floor.h" />

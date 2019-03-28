@@ -8,6 +8,9 @@
 #include "FanPickup.h"
 #include "TreatsPickup.h"
 #include "B1NM3N.h"
+#include "GrabberBox.h"
+#include "FanTool.h"
+#include "FanTarget.h"
 
 
 //Library Includes
@@ -175,6 +178,14 @@ void Level::LoadLevel(int _leveltoLoad)
 			m_WorldList.push_back(aFloor);
 			m_collisionList.push_back(std::make_pair(aPlayer, aFloor));
 		}
+		else if (ch == 'G')
+		{
+			GrabberBox* aGrabberBox = new GrabberBox();
+			aGrabberBox->SetPosition(x, y);
+			m_updateList.push_back(aGrabberBox);
+			m_WorldList.push_back(aGrabberBox);
+			m_collisionList.push_back(std::make_pair(aPlayer, aGrabberBox));
+		}
 		else if (ch == 'I')
 		{
 			FanPickup* aFanPickup = new FanPickup();
@@ -190,6 +201,14 @@ void Level::LoadLevel(int _leveltoLoad)
 			m_updateList.push_back(aTreatPickup);
 			m_WorldList.push_back(aTreatPickup);
 			m_collisionList.push_back(std::make_pair(aTreatPickup, aPlayer));
+		}
+		else if (ch == 'R')
+		{
+			FanTarget* aFanTarget = new FanTarget();
+			aFanTarget->SetPosition(x, y);
+			m_updateList.push_back(aFanTarget);
+			m_WorldList.push_back(aFanTarget);
+			m_collisionList.push_back(std::make_pair(aPlayer, aFanTarget));
 		}
 		else if (ch == '-')
 		{
