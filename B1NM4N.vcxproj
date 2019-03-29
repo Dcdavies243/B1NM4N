@@ -144,6 +144,7 @@
     <ClCompile Include="PlayerBottom.cpp" />
     <ClCompile Include="PlayerTop.cpp" />
     <ClCompile Include="TreatsPickup.cpp" />
+    <ClCompile Include="Wall.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="B1NM3N.h" />
@@ -166,6 +167,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerBottom.h" />
     <ClInclude Include="PlayerTop.h" />
+    <ClInclude Include="Wall.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="levels\Level1.txt" />

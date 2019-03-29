@@ -83,6 +83,9 @@
     <ClCompile Include="FanTarget.cpp">
       <Filter>GameCode</Filter>
     </ClCompile>
+    <ClCompile Include="Wall.cpp">
+      <Filter>GameCode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Animation.h">
@@ -143,6 +146,9 @@
       <Filter>GameCode</Filter>
     </ClInclude>
     <ClInclude Include="FanTarget.h">
+      <Filter>GameCode</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall.h">
       <Filter>GameCode</Filter>
     </ClInclude>
   </ItemGroup>

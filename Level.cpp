@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "PlayerTop.h"
 #include "PlayerBottom.h"
+#include "Wall.h"
 #include "Floor.h"
 #include "FanPickup.h"
 #include "TreatsPickup.h"
@@ -89,7 +90,7 @@ void Level::Update(sf::Time _frameTime)
 
 	// Draw game world to the window
 	camera.setCenter(m_player->GetPosition().x, m_player->GetPosition().y - 300);
-	camera.setSize(sf::Vector2f(1920, 1080));
+	camera.setSize(sf::Vector2f(2000, 1080));
 }
 
 void Level::LoadLevel(int _leveltoLoad)
@@ -181,6 +182,14 @@ void Level::LoadLevel(int _leveltoLoad)
 			m_updateList.push_back(aFloor);
 			m_WorldList.push_back(aFloor);
 			m_collisionList.push_back(std::make_pair(aPlayer, aFloor));
+		}
+		else if (ch == 'W')
+		{
+			Wall* aWall = new Wall();
+			aWall->SetPosition(x, y);
+			m_updateList.push_back(aWall);
+			m_WorldList.push_back(aWall);
+			m_collisionList.push_back(std::make_pair(aPlayer, aWall));
 		}
 		else if (ch == 'G')
 		{

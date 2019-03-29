@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "PlayerTop.h"
 #include "Framework/AssetManager.h"
+#include "Wall.h"
 #include "Floor.h"
 #include "PlayerTop.h"
 #include "PlayerBottom.h"
@@ -23,7 +24,7 @@ Player::Player()
 	, m_bottom(nullptr)
 	, m_fantool(nullptr)
 	, m_grabbing(false)
-	, m_falling(true)
+	, m_falling()
 	, fanActive(false)
 	, m_offset(0, 50.0f)
 	, fanOffset(55, -50)
@@ -49,7 +50,7 @@ void Player::Update(sf::Time _frameTime)
 {
 	//Assume no keys are pressed
 	m_velocity.x = 0.0f;
-	m_velocity.y = 0.0f;
+	m_velocity.y = SPEED;
 
 	Input();
 
@@ -169,16 +170,27 @@ sf::FloatRect Player::GetBounds()
 void Player::Collide(GameObject& _collider)
 {
 
+	sf::FloatRect topCollider = m_top->GetBounds();
+
 	Floor* castFloor = dynamic_cast<Floor*>(&_collider);
 
 	if (castFloor != nullptr)
 	{
 		//We hit a wall
+		//Return to previous position outside floor bounds
+
+		m_bottom->SetPosition(m_position.x,m_previousPosition.y);
+
+	}
+
+	Wall* castWall = dynamic_cast<Wall*>(&_collider);
+
+	if (castWall != nullptr)
+	{
+		//We hit a wall
 		//Return to previous position outside wall bounds
 
 		m_bottom->SetPosition(m_previousPosition);
-
-		m_falling = false;
 
 	}
 
@@ -187,12 +199,20 @@ void Player::Collide(GameObject& _collider)
 	if (castGrabberBox != nullptr)
 	{
 		//We hit a grab box
+
 		//Set boolean to allow us to grab
+		if (topCollider.intersects(castGrabberBox->GetBounds()))
+		{
+			m_grabbing = true;
+			m_grabposition = castGrabberBox->GetPosition();
+		}
+		else
+		{
+			m_grabbing = false;
+			m_grabposition = m_bottom->GetPosition();
+		}
 
-		m_grabbing = true;
-		m_grabposition = castGrabberBox->GetPosition();
-
-		m_bottom->SetPosition(m_previousPosition);
+		m_bottom->SetPosition(m_position.x, m_previousPosition.y);
 
 	}
 
