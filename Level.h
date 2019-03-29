@@ -20,6 +20,12 @@ private:
 
 
 	//GameObject Lists
+
+	//Camera settings
+	sf::View camera;
+	sf::Vector2f centre;
+	sf::Vector2f halfSize;
+
 	int m_currentLevel;
 	GameObject* m_player;
 	

@@ -182,17 +182,6 @@ void Player::Collide(GameObject& _collider)
 
 	}
 
-	B1NM3N* castB1NM3N = dynamic_cast<B1NM3N*>(&_collider);
-
-	if (castB1NM3N != nullptr)
-	{
-		//We hit an enemy B1NM4N
-		//Kill player, reset level
-
-		Kill();
-
-	}
-
 	GrabberBox* castGrabberBox = dynamic_cast<GrabberBox*>(&_collider);
 
 	if (castGrabberBox != nullptr)
@@ -219,6 +208,16 @@ void Player::Collide(GameObject& _collider)
 		castFanTarget->Remove();
 	}
 
+	B1NM3N* castB1NM3N = dynamic_cast<B1NM3N*>(&_collider);
+
+	if (castB1NM3N != nullptr)
+	{
+		//We hit an enemy B1NM4N
+		//Kill player, reset level
+
+		Kill();
+
+	}
 }
 
 bool Player::HasFan()

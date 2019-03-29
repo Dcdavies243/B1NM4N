@@ -24,19 +24,23 @@ Level::Level()
 	, m_WorldList()
 	, m_UIList()
 	, m_collisionList()
+	, centre(960, 540)
+	, halfSize(400, 400)
+	, camera()
 {
 	LoadLevel(1);
 }
 
 void Level::Draw(sf::RenderTarget& _target)
 {
-	//Create and update camera
-	sf::View camera = _target.getDefaultView();
-
-	// Draw game world to the window
-	camera.setCenter(m_player->GetPosition());
-
 	// TODO: Draw game objects
+
+	//Create and update camera
+	_target.setView(camera);
+
+	// Draw UI to the window
+	//_target.setView(_target.getDefaultView());
+	
 
 	for (int i = 0; i < m_UIList.size(); ++i)
 	{
@@ -49,11 +53,7 @@ void Level::Draw(sf::RenderTarget& _target)
 		if (m_WorldList[i]->IsActive())
 			m_WorldList[i]->Draw(_target);
 	}
-
-
-	// Draw UI to the window
-	_target.setView(_target.getDefaultView());
-
+	
 }
 
 void Level::Update(sf::Time _frameTime)
@@ -86,6 +86,10 @@ void Level::Update(sf::Time _frameTime)
 			}
 		}
 	}
+
+	// Draw game world to the window
+	camera.setCenter(m_player->GetPosition().x, m_player->GetPosition().y - 300);
+	camera.setSize(sf::Vector2f(1920, 1080));
 }
 
 void Level::LoadLevel(int _leveltoLoad)

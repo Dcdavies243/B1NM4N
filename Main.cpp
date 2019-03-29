@@ -20,6 +20,7 @@ int main()
 
 	// Window - to draw to the screen
 	sf::RenderWindow gameWindow;
+
 	gameWindow.create(sf::VideoMode::getDesktopMode(), "B1NM4N", sf::Style::Titlebar | sf::Style::Close);
 
 	// Seed our random number generator 
@@ -33,9 +34,6 @@ int main()
 
 	// Game state
 	bool playing = false;
-
-	// Game camera
-	sf::View camera = gameWindow.getDefaultView();
 
 	//Level setup
 	Level currentLevel;
