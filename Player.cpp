@@ -7,6 +7,7 @@
 #include "PlayerTop.h"
 #include "PlayerBottom.h"
 #include "FanTool.h"
+#include "TreatsTool.h"
 #include "B1NM3N.h"
 #include "GrabberBox.h"
 #include "FanTarget.h"
@@ -23,11 +24,13 @@ Player::Player()
 	, m_top(nullptr)
 	, m_bottom(nullptr)
 	, m_fantool(nullptr)
+	, m_treatstool(nullptr)
 	, m_grabbing(false)
 	, m_falling()
 	, fanActive(false)
 	, m_offset(0, 50.0f)
 	, fanOffset(55, -50)
+	, treatsOffset(100, 0)
 {
 
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/GroundPlacehold.png"));
@@ -38,6 +41,7 @@ Player::Player()
 
 	//Set up Tools/Upgrades
 	m_fantool = new FanTool();
+	m_treatstool = new TreatsTool();
 
 	//TODO: Set up the animation
 
@@ -66,6 +70,7 @@ void Player::Update(sf::Time _frameTime)
 
 void Player::Input()
 {
+
 	sf::Vector2f m_topPosition = m_top->GetPosition();
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
@@ -91,6 +96,8 @@ void Player::Input()
 		fanOffset = sf::Vector2f(-30, fanOffset.y);
 
 		m_velocity.x = -SPEED;
+
+		treatsOffset = sf::Vector2f(-100,0);
 	}
 
 	
@@ -99,6 +106,10 @@ void Player::Input()
 		fanOffset = sf::Vector2f(55, fanOffset.y);
 
 		m_velocity.x = SPEED;
+
+		treatsOffset = sf::Vector2f(100, 0);
+
+		
 	}
 
 	if (m_grabbing && sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
@@ -117,6 +128,14 @@ void Player::Input()
 	{
 		fanActive = false;
 	}
+
+	if (m_treats && !treatActive && sf::Keyboard::isKeyPressed(sf::Keyboard::LControl))
+	{
+
+		treatActive = true;
+		treatTarget = m_bottom->GetPosition() + treatsOffset;
+	}
+
 }
 
 sf::Vector2f Player::GetPosition()
@@ -137,6 +156,8 @@ void Player::SetPosition(sf::Vector2f _position)
 	m_bottom->SetPosition(_position);
 
 	m_fantool->SetPosition(_position + fanOffset);
+	
+	m_treatstool->SetPosition(treatTarget);
 
 }
 
@@ -149,6 +170,11 @@ void Player::Draw(sf::RenderTarget& _target)
 	if (fanActive)
 	{
 		m_fantool->Draw(_target);
+	}
+
+	if (treatActive)
+	{
+		m_treatstool->Draw(_target);
 	}
 }
 
@@ -250,6 +276,11 @@ void Player::CollectFan()
 	m_fan = true;
 }
 
+bool Player::HasTreats()
+{
+	return m_treats;
+}
+
 void Player::CollectTreats()
 {
 	m_treats = true;
@@ -258,6 +289,11 @@ void Player::CollectTreats()
 void Player::UseFan()
 {
 	fanActive = true;
+}
+
+void Player::UseTreat()
+{
+	treatActive = true;
 }
 
 void Player::Kill()

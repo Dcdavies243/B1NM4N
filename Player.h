@@ -10,6 +10,7 @@ class PlayerTop;
 class PlayerBottom;
 class GrabberBox;
 class FanTool;
+class TreatsTool;
 
 class Player : public MovingObject
 {
@@ -35,10 +36,12 @@ public:
 	//Pickup Methods
 	bool HasFan();
 	void CollectFan();
+	bool HasTreats();
 	void CollectTreats();
 
 	//Tool Methods
 	void UseFan();
+	void UseTreat();
 
 	void Kill();
 	void SetLevel(Level* _newLevel);
@@ -55,6 +58,9 @@ private:
 	//Tool variables
 	bool fanActive;
 
+	bool treatActive;
+	sf::Vector2f treatTarget;
+
 
 	//Position and Offset for Body
 	sf::Vector2f m_position;
@@ -62,6 +68,9 @@ private:
 
 	//Offset for Fan
 	sf::Vector2f fanOffset;
+
+	//Target for treats
+	sf::Vector2f treatsOffset;
 
 	//Variable for grabbing position
 	sf::Vector2f m_grabposition;
@@ -75,6 +84,7 @@ private:
 
 	//Tool upgrades
 	FanTool* m_fantool;
+	TreatsTool* m_treatstool;
 
 	//TODO: AnimationSystem
 
