@@ -12,8 +12,6 @@ FanTarget::FanTarget()
 
 	//TODO: Set up the animation
 
-	//TODO: Create individual animations
-
 }
 
 void FanTarget::Remove()

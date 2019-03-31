@@ -90,7 +90,7 @@ void Level::Update(sf::Time _frameTime)
 
 	// Draw game world to the window
 	camera.setCenter(m_player->GetPosition().x, m_player->GetPosition().y - 300);
-	camera.setSize(sf::Vector2f(2000, 1080));
+	camera.setSize(sf::Vector2f(1600, 900));
 }
 
 void Level::LoadLevel(int _leveltoLoad)
