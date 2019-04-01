@@ -18,8 +18,14 @@ public:
 	virtual void SetPosition(float _x, float _y);
 	virtual sf::Vector2f GetPosition();
 
+	void Flip();
+	void Unflip();
+
 protected: // This means derived/child classes can access
 
+	bool flipped;
+
 	sf::Sprite m_sprite;
+	
 
 };

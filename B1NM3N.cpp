@@ -48,15 +48,19 @@ void B1NM3N::SetPatrol()
 void B1NM3N::MoveEnemy(sf::Time _frameTime)
 {
 	if (m_sprite.getPosition() == pointB)
+	{
+		Unflip();
 		speed = -0.3;
+	}
 	if (m_sprite.getPosition() == pointA)
+	{
+		Flip();
 		speed = 0.3;
-
+	}
 	factor += (speed * _frameTime.asSeconds());
 
 
 	SetPosition(Interpolate(pointA, pointB, factor));
-
 
 }
 

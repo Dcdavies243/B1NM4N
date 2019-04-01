@@ -16,3 +16,15 @@ FanTool::FanTool()
 	//TODO: Create individual animations
 
 }
+
+void FanTool::Flip()
+{
+
+	m_sprite.setScale(-1.f, 1.f);
+}
+
+void FanTool::Unflip()
+{
+
+	m_sprite.setScale(1.f, 1.f);
+}

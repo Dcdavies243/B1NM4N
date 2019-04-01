@@ -13,7 +13,6 @@ public:
 
 	//Overriding Methods
 
-
 private:
 
 	//TODO: AnimationSystem

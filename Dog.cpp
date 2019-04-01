@@ -7,9 +7,9 @@
 Dog::Dog()
 	: MovingObject() //Initialise base class
 	, m_position()
-	, speed(0.3)
+	, speed()
+	, m_direction (1, 0)
 {
-
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/EnemyPlacehold.png"));
 }
 
@@ -27,20 +27,26 @@ void Dog::Update(sf::Time _frameTime)
 {
 	m_position = m_sprite.getPosition();
 
-	MoveEnemy(_frameTime);
+	MoveEnemy();
 
 }
 
-void Dog::GetTarget()
+void Dog::GetTarget(GameObject& _collider)
 {
+	Player* castPlayer = dynamic_cast<Player*>(&_collider);
 
+	if (castPlayer != nullptr)
+	{
+		m_playerPos = castPlayer->GetPosition();
+	}
 
+	m_direction = m_playerPos - m_position;
 
 }
 
-void Dog::MoveEnemy(sf::Time _frameTime)
+void Dog::MoveEnemy()
 {
 
-	
+	SetPosition((m_position.x + 0.3f) * m_direction.x, m_position.y);
 
 }

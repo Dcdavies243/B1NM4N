@@ -89,6 +89,9 @@
     <ClCompile Include="TreatsTool.cpp">
       <Filter>GameCode</Filter>
     </ClCompile>
+    <ClCompile Include="Background.cpp">
+      <Filter>GameCode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Animation.h">
@@ -155,6 +158,9 @@
       <Filter>GameCode</Filter>
     </ClInclude>
     <ClInclude Include="TreatsTool.h">
+      <Filter>GameCode</Filter>
+    </ClInclude>
+    <ClInclude Include="Background.h">
       <Filter>GameCode</Filter>
     </ClInclude>
   </ItemGroup>

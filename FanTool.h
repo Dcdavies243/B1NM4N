@@ -13,6 +13,8 @@ public:
 
 	//Overriding Methods
 
+	void Flip();
+	void Unflip();
 
 private:
 

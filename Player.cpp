@@ -28,9 +28,9 @@ Player::Player()
 	, m_grabbing(false)
 	, m_falling()
 	, fanActive(false)
-	, m_offset(0, 50.0f)
-	, fanOffset(55, -50)
-	, treatsOffset(100, 0)
+	, m_offset(0, 30.0f)
+	, fanOffset(55, -43)
+	, treatsOffset(0, 0)
 {
 
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/GroundPlacehold.png"));
@@ -84,7 +84,7 @@ void Player::Input()
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
-		if (m_offset.y > 50)
+		if (m_offset.y > 30)
 		{
 			m_offset.y = m_offset.y - (SPEED / 600);
 		}
@@ -93,34 +93,38 @@ void Player::Input()
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
-		fanOffset = sf::Vector2f(-30, fanOffset.y);
+		fanOffset = sf::Vector2f(-35, fanOffset.y);
 
 		m_velocity.x = -SPEED;
 
-		treatsOffset = sf::Vector2f(-100,0);
+		flipped = true;
+
+		treatsOffset = sf::Vector2f(0,0);
 	}
 
 	
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
-		fanOffset = sf::Vector2f(55, fanOffset.y);
+		fanOffset = sf::Vector2f(40, fanOffset.y);
 
 		m_velocity.x = SPEED;
 
-		treatsOffset = sf::Vector2f(100, 0);
+		flipped = false;
 
-		
+		treatsOffset = sf::Vector2f(0, 0);
+
+
 	}
 
 	if (m_grabbing && sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
 		m_grabbing = false;
-		m_offset.y = 50;
+		m_offset.y = 30.0f;
 
 		m_bottom->SetPosition(m_grabposition + sf::Vector2f(0, -50));
 	}
 
-	if (m_fan && sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
+	if (m_fan && m_offset.y == 30.0f && sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
 	{
 		fanActive = true;
 	}
@@ -129,7 +133,7 @@ void Player::Input()
 		fanActive = false;
 	}
 
-	if (m_treats && !treatActive && sf::Keyboard::isKeyPressed(sf::Keyboard::LControl))
+	if (m_treats && !treatActive && m_offset.y == 30.0f && sf::Keyboard::isKeyPressed(sf::Keyboard::LControl))
 	{
 
 		treatActive = true;
@@ -157,15 +161,30 @@ void Player::SetPosition(sf::Vector2f _position)
 
 	m_fantool->SetPosition(_position + fanOffset);
 	
-	m_treatstool->SetPosition(treatTarget);
+	if (treatActive)
+	{
+		m_treatstool->SetPosition(treatTarget);
+	}
 
 }
 
 void Player::Draw(sf::RenderTarget& _target)
 {
 	m_top->Draw(_target);
-
 	m_bottom->Draw(_target);
+
+	if (flipped)
+	{
+		m_top->Flip();
+		m_bottom->Flip();
+		m_fantool->Flip();
+	}
+	else
+	{
+		m_top->Unflip();
+		m_bottom->Unflip();
+		m_fantool->Unflip();
+	}
 
 	if (fanActive)
 	{

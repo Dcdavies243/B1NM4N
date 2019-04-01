@@ -7,7 +7,7 @@
 GrabberBox::GrabberBox()
 	: SpriteObject() //Initialise base class
 {
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/BackgroundPlacehold.png"));
+	m_sprite.setTexture(AssetManager::GetTexture("graphics/Grabber.png"));
 
 	//TODO: Set up the animation
 

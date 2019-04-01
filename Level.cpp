@@ -1,6 +1,7 @@
 
 //Project Includes
 #include "Level.h"
+#include "Background.h"
 #include "Player.h"
 #include "PlayerTop.h"
 #include "PlayerBottom.h"
@@ -12,6 +13,7 @@
 #include "GrabberBox.h"
 #include "FanTool.h"
 #include "FanTarget.h"
+#include "Dog.h"
 
 
 //Library Includes
@@ -34,6 +36,8 @@ Level::Level()
 
 void Level::Draw(sf::RenderTarget& _target)
 {
+	//Draw Background
+	
 	// TODO: Draw game objects
 
 	//Create and update camera
@@ -89,8 +93,15 @@ void Level::Update(sf::Time _frameTime)
 	}
 
 	// Draw game world to the window
-	camera.setCenter(m_player->GetPosition().x, m_player->GetPosition().y - 300);
-	camera.setSize(sf::Vector2f(1600, 900));
+	if (m_player->GetPosition().y <= 1200)
+	{
+		camera.setCenter(m_player->GetPosition().x, m_player->GetPosition().y - 300);
+	}
+	else
+	{
+		camera.setCenter(m_player->GetPosition().x, 1150);
+	}
+	camera.setSize(sf::Vector2f(1920, 1080));
 }
 
 void Level::LoadLevel(int _leveltoLoad)
@@ -139,6 +150,8 @@ void Level::LoadLevel(int _leveltoLoad)
 	Player* aPlayer = new Player();
 	m_player = aPlayer;
 
+	
+
 	//Read each character one by one from the file..
 	char ch;
 
@@ -165,6 +178,14 @@ void Level::LoadLevel(int _leveltoLoad)
 			aPlayer->SetLevel(this);
 			m_updateList.push_back(aPlayer);
 			m_WorldList.push_back(aPlayer);
+		}
+		else if (ch == 'D')
+		{
+			Dog* aDog = new Dog();
+			aDog->SetPosition(x, y);
+			m_updateList.push_back(aDog);
+			m_WorldList.push_back(aDog);
+			m_collisionList.push_back(std::make_pair(aPlayer, aDog));
 		}
 		else if (ch == 'B')
 		{

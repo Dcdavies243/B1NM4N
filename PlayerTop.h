@@ -12,7 +12,7 @@ public:
 	PlayerTop();
 
 	//Overriding Methods
-
+;
 private:
 
 	//TODO: AnimationSystem

@@ -10,7 +10,7 @@
 PlayerTop::PlayerTop()
 	: SpriteObject() //Initialise base class
 {
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/PlayerPlacehold(B&T).png"));
+	m_sprite.setTexture(AssetManager::GetTexture("graphics/PlayerTop.png"));
 
 	//TODO: Set up the animation
 

@@ -9,6 +9,7 @@
 // Project Includes
 #include "Framework/AssetManager.h"
 #include"Level.h"
+#include"Background.h"
 
 
 // The main() Function - entry point for our program
@@ -38,6 +39,8 @@ int main()
 	//Level setup
 	Level currentLevel;
 
+	//background setup
+	Background currentBack;
 
 
 	// -----------------------------------------------
@@ -81,8 +84,13 @@ int main()
 		// Clear the window to a single colour
 		gameWindow.clear(sf::Color::White);
 
+		//Draw background
+		currentBack.SetPosition(0, -1000);
+		currentBack.Draw(gameWindow);
+
 		//Pass draw to level
 		currentLevel.Draw(gameWindow);
+
 
 		// Display the window contents on the screen
 		gameWindow.display();

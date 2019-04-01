@@ -5,6 +5,7 @@
 SpriteObject::SpriteObject()
 	: GameObject() // Always initialise your parent class in your constructor
 	, m_sprite()
+	, flipped(false)
 {
 
 }
@@ -36,4 +37,16 @@ void SpriteObject::SetPosition(float _x, float _y)
 sf::Vector2f SpriteObject::GetPosition()
 {
 	return m_sprite.getPosition();
+}
+
+void SpriteObject::Flip()
+{
+
+	m_sprite.setScale(-1.f, 1.f);
+}
+
+void SpriteObject::Unflip()
+{
+
+	m_sprite.setScale(1.f, 1.f);
 }

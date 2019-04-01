@@ -5,6 +5,7 @@
 #include "Framework/AnimationSystem.h"
 #include "Level.h"
 
+
 class Dog : public MovingObject
 {
 
@@ -17,15 +18,15 @@ public:
 	virtual void SetPosition(sf::Vector2f _position);
 
 	//Class Methods
-	virtual void MoveEnemy(sf::Time _frameTime);
-	virtual void GetTarget();
+	virtual void MoveEnemy();
+	virtual void GetTarget(GameObject& _collider);
 
 
 private:
 
-
 	sf::Vector2f m_position;
 	sf::Vector2f m_playerPos;
+	sf::Vector2f m_direction;
 
 	float speed;
 	float factor = 0.f;
