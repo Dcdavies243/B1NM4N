@@ -315,6 +315,8 @@ void Player::UseTreat()
 	treatActive = true;
 }
 
+
+
 void Player::Kill()
 {
 	//Reload current level

@@ -82,11 +82,10 @@ int main()
 		// Draw Section
 		// -----------------------------------------------
 		// Clear the window to a single colour
-		gameWindow.clear(sf::Color::White);
+		gameWindow.clear(sf::Color::Black);
 
 		//Draw background
-		currentBack.SetPosition(0, -1000);
-		currentBack.Draw(gameWindow);
+		
 
 		//Pass draw to level
 		currentLevel.Draw(gameWindow);
