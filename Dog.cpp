@@ -23,30 +23,28 @@ void Dog::SetPosition(float _x, float _y)
 	m_sprite.setPosition(_x, _y);
 }
 
+void Dog::SetTarget(Player* _castPlayer)
+{
+	if (castPlayer != nullptr)
+		castPlayer = _castPlayer;
+
+}
+
 void Dog::Update(sf::Time _frameTime)
 {
 	m_position = m_sprite.getPosition();
 
 	MoveEnemy();
 
-}
+	m_playerPos = castPlayer->GetPosition();
 
-void Dog::GetTarget(GameObject& _collider)
-{
-	Player* castPlayer = dynamic_cast<Player*>(&_collider);
-
-	if (castPlayer != nullptr)
-	{
-		m_playerPos = castPlayer->GetPosition();
-	}
-
-	m_direction = m_playerPos - m_position;
-
+	m_direction = m_playerPos;
+	
 }
 
 void Dog::MoveEnemy()
 {
 
-	SetPosition((m_position.x + 0.3f) * m_direction.x, m_position.y);
+	SetPosition((m_position.x) * m_direction.x, m_position.y);
 
 }

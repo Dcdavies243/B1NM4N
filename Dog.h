@@ -6,6 +6,9 @@
 #include "Level.h"
 
 
+//Forward Declaration
+class Player;
+
 class Dog : public MovingObject
 {
 
@@ -19,10 +22,12 @@ public:
 
 	//Class Methods
 	virtual void MoveEnemy();
-	virtual void GetTarget(GameObject& _collider);
+	virtual void SetTarget(Player* _castPlayer);
 
 
 private:
+
+	Player* castPlayer;
 
 	sf::Vector2f m_position;
 	sf::Vector2f m_playerPos;
