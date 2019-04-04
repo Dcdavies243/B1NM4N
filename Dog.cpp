@@ -2,13 +2,15 @@
 #include "Framework/AssetManager.h"
 #include "Dog.h"
 #include "Player.h"
+#include "TreatsTool.h"
 
 
 Dog::Dog()
 	: MovingObject() //Initialise base class
 	, m_position()
-	, speed()
-	, m_direction (1, 0)
+	, speed(0.3f)
+	, m_direction ()
+	, m_magnitude()
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/EnemyPlacehold.png"));
 }
@@ -25,8 +27,8 @@ void Dog::SetPosition(float _x, float _y)
 
 void Dog::SetTarget(Player* _castPlayer)
 {
-	if (castPlayer != nullptr)
-		castPlayer = _castPlayer;
+
+	castPlayer = _castPlayer;
 
 }
 
@@ -36,15 +38,27 @@ void Dog::Update(sf::Time _frameTime)
 
 	MoveEnemy();
 
-	m_playerPos = castPlayer->GetPosition();
-
-	m_direction = m_playerPos;
-	
 }
 
 void Dog::MoveEnemy()
 {
+	m_playerPos = castPlayer->GetPosition();
 
-	SetPosition((m_position.x) * m_direction.x, m_position.y);
+	m_direction = (m_playerPos - m_position);
+
+	m_magnitude = (sqrt(pow(m_direction.x, 2) + pow(m_direction.y, 2)));
+
+	m_normalised = sf::Vector2f(m_direction.x / m_magnitude, m_direction.y / m_magnitude);
+
+	if (m_playerPos.y = m_position.y)
+	{
+		SetPosition(m_position.x + (m_normalised.x * speed), m_position.y);
+	}
 
 }
+
+void Dog::Kill()
+{
+	m_active = false;
+}
+

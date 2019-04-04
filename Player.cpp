@@ -9,6 +9,7 @@
 #include "FanTool.h"
 #include "TreatsTool.h"
 #include "B1NM3N.h"
+#include "Dog.h"
 #include "GrabberBox.h"
 #include "FanTarget.h"
 
@@ -276,6 +277,17 @@ void Player::Collide(GameObject& _collider)
 	B1NM3N* castB1NM3N = dynamic_cast<B1NM3N*>(&_collider);
 
 	if (castB1NM3N != nullptr)
+	{
+		//We hit an enemy B1NM4N
+		//Kill player, reset level
+
+		Kill();
+
+	}
+
+	Dog* castDog = dynamic_cast<Dog*>(&_collider);
+
+	if (castDog != nullptr)
 	{
 		//We hit an enemy B1NM4N
 		//Kill player, reset level

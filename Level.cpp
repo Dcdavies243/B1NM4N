@@ -13,6 +13,7 @@
 #include "GrabberBox.h"
 #include "FanTool.h"
 #include "FanTarget.h"
+#include "TreatsTool.h"
 #include "Dog.h"
 
 
@@ -150,6 +151,10 @@ void Level::LoadLevel(int _leveltoLoad)
 	Player* aPlayer = new Player();
 	m_player = aPlayer;
 
+	TreatsTool* aTreat = new TreatsTool();
+	m_treat = aTreat;
+
+
 	
 
 	//Read each character one by one from the file..
@@ -183,9 +188,11 @@ void Level::LoadLevel(int _leveltoLoad)
 		{
 			Dog* aDog = new Dog();
 			aDog->SetPosition(x, y);
+			aDog->SetTarget(aPlayer);
 			m_updateList.push_back(aDog);
 			m_WorldList.push_back(aDog);
 			m_collisionList.push_back(std::make_pair(aPlayer, aDog));
+			m_collisionList.push_back(std::make_pair(aDog, aTreat));
 		}
 		else if (ch == 'B')
 		{

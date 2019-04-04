@@ -23,6 +23,7 @@ public:
 	//Class Methods
 	virtual void MoveEnemy();
 	virtual void SetTarget(Player* _castPlayer);
+	virtual void Kill();
 
 
 private:
@@ -31,8 +32,12 @@ private:
 
 	sf::Vector2f m_position;
 	sf::Vector2f m_playerPos;
-	sf::Vector2f m_direction;
 
+
+	sf::Vector2f m_direction;
+	sf::Vector2f m_normalised;
+	
+	float m_magnitude;
 	float speed;
 	float factor = 0.f;
 
