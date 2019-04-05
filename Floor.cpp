@@ -7,6 +7,6 @@ Floor::Floor()
 	: SpriteObject() //Initialise parent class
 
 {
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/GroundPlacehold.png"));
+	m_sprite.setTexture(AssetManager::GetTexture("graphics/Level1Floor.png"));
 
 }

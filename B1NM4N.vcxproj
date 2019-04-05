@@ -147,6 +147,7 @@
     <ClCompile Include="TreatsPickup.cpp" />
     <ClCompile Include="TreatsTool.cpp" />
     <ClCompile Include="Wall.cpp" />
+    <ClCompile Include="WallRight.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="B1NM3N.h" />
@@ -172,6 +173,7 @@
     <ClInclude Include="PlayerTop.h" />
     <ClInclude Include="TreatsTool.h" />
     <ClInclude Include="Wall.h" />
+    <ClInclude Include="WallRight.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="levels\Level1.txt" />

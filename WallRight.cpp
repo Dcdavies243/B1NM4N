@@ -1,12 +1,12 @@
 //Project Includes
-#include "Wall.h"
+#include "WallRight.h"
 #include "Player.h"
 #include "Framework/AssetManager.h"
 
-Wall::Wall()
+WallRight::WallRight()
 	: SpriteObject() //Initialise parent class
 
 {
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/Level1WallLeft.png"));
+	m_sprite.setTexture(AssetManager::GetTexture("graphics/Level1WallRight.png"));
 
 }

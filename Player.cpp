@@ -3,6 +3,7 @@
 #include "PlayerTop.h"
 #include "Framework/AssetManager.h"
 #include "Wall.h"
+#include "WallRight.h"
 #include "Floor.h"
 #include "PlayerTop.h"
 #include "PlayerBottom.h"
@@ -230,8 +231,9 @@ void Player::Collide(GameObject& _collider)
 	}
 
 	Wall* castWall = dynamic_cast<Wall*>(&_collider);
+	WallRight* castWallRight = dynamic_cast<WallRight*>(&_collider);
 
-	if (castWall != nullptr)
+	if (castWall != nullptr || castWallRight !=nullptr)
 	{
 		//We hit a wall
 		//Return to previous position outside wall bounds

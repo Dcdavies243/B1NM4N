@@ -92,6 +92,9 @@
     <ClCompile Include="Background.cpp">
       <Filter>GameCode</Filter>
     </ClCompile>
+    <ClCompile Include="WallRight.cpp">
+      <Filter>GameCode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Animation.h">
@@ -161,6 +164,9 @@
       <Filter>GameCode</Filter>
     </ClInclude>
     <ClInclude Include="Background.h">
+      <Filter>GameCode</Filter>
+    </ClInclude>
+    <ClInclude Include="WallRight.h">
       <Filter>GameCode</Filter>
     </ClInclude>
   </ItemGroup>

@@ -6,6 +6,7 @@
 #include "PlayerTop.h"
 #include "PlayerBottom.h"
 #include "Wall.h"
+#include "WallRight.h"
 #include "Floor.h"
 #include "FanPickup.h"
 #include "TreatsPickup.h"
@@ -154,9 +155,6 @@ void Level::LoadLevel(int _leveltoLoad)
 	TreatsTool* aTreat = new TreatsTool();
 	m_treat = aTreat;
 
-
-	
-
 	//Read each character one by one from the file..
 	char ch;
 
@@ -211,13 +209,21 @@ void Level::LoadLevel(int _leveltoLoad)
 			m_WorldList.push_back(aFloor);
 			m_collisionList.push_back(std::make_pair(aPlayer, aFloor));
 		}
-		else if (ch == 'W')
+		else if (ch == 'w')
 		{
 			Wall* aWall = new Wall();
 			aWall->SetPosition(x, y);
 			m_updateList.push_back(aWall);
 			m_WorldList.push_back(aWall);
 			m_collisionList.push_back(std::make_pair(aPlayer, aWall));
+		}
+		else if (ch == 'W')
+		{
+			WallRight* aWallRight = new WallRight();
+			aWallRight->SetPosition(x, y);
+			m_updateList.push_back(aWallRight);
+			m_WorldList.push_back(aWallRight);
+			m_collisionList.push_back(std::make_pair(aPlayer, aWallRight));
 		}
 		else if (ch == 'G')
 		{
