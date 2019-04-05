@@ -1,4 +1,3 @@
-#include "Player.h"
 #include "Framework/AssetManager.h"
 #include "Floor.h"
 #include "FanTool.h"
@@ -9,12 +8,37 @@
 FanTool::FanTool()
 	: SpriteObject() //Initialise base class
 {
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/FanToolPlacehold.png"));
+	m_sprite.setTexture(AssetManager::GetTexture("graphics/FanItemTool/sprite_0.png"));
 
-	//TODO: Set up the animation
+	// Set up the animation
+	m_animationSystem.SetSprite(m_sprite);
 
-	//TODO: Create individual animations
+	// Create indvidual animations
 
+	Animation& activeTool = m_animationSystem.CreateAnimation("activeTool");
+
+	activeTool.AddFrame(AssetManager::GetTexture("graphics/FanItemTool/sprite_1.png"));
+	activeTool.AddFrame(AssetManager::GetTexture("graphics/FanItemTool/sprite_2.png"));
+	activeTool.AddFrame(AssetManager::GetTexture("graphics/FanItemTool/sprite_3.png"));
+	activeTool.AddFrame(AssetManager::GetTexture("graphics/FanItemTool/sprite_4.png"));
+	activeTool.AddFrame(AssetManager::GetTexture("graphics/FanItemTool/sprite_5.png"));
+	activeTool.AddFrame(AssetManager::GetTexture("graphics/FanItemTool/sprite_6.png"));
+	activeTool.AddFrame(AssetManager::GetTexture("graphics/FanItemTool/sprite_7.png"));
+	activeTool.AddFrame(AssetManager::GetTexture("graphics/FanItemTool/sprite_8.png"));
+
+	activeTool.SetPlayBackSpeed(10);
+	activeTool.SetLoop(true);
+
+}
+
+void FanTool::Update(sf::Time _frameTime)
+{
+	m_animationSystem.Update(_frameTime);
+}
+
+void FanTool::RunAnimation()
+{
+	m_animationSystem.Play("activeTool");
 }
 
 void FanTool::Flip()

@@ -31,7 +31,7 @@ Player::Player()
 	, m_falling()
 	, fanActive(false)
 	, m_offset(0, 30.0f)
-	, fanOffset(55, -43)
+	, fanOffset(55, 0)
 	, treatsOffset(0, 0)
 {
 
@@ -129,6 +129,7 @@ void Player::Input()
 	if (m_fan && m_offset.y == 30.0f && sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
 	{
 		fanActive = true;
+		m_fantool->RunAnimation();
 	}
 	else
 	{
