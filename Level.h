@@ -33,6 +33,7 @@ private:
 
 	std::vector<GameObject*> m_updateList;
 	std::vector<GameObject*> m_WorldList;
+	std::vector<GameObject*> m_BackgroundList;
 	std::vector<GameObject*> m_UIList;
 
 	std::vector<std::pair<GameObject*, GameObject*> > m_collisionList;

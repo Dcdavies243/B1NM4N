@@ -18,6 +18,9 @@
     <Filter Include="Levels">
       <UniqueIdentifier>{67edb957-e8e1-4b12-a285-013a8f3bde76}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ArtClasses">
+      <UniqueIdentifier>{e203fa45-bd8f-497c-9093-fb386ffe8b93}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -95,6 +98,12 @@
     <ClCompile Include="WallRight.cpp">
       <Filter>GameCode</Filter>
     </ClCompile>
+    <ClCompile Include="FillerBox.cpp">
+      <Filter>ArtClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="RustGirder.cpp">
+      <Filter>ArtClasses</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Animation.h">
@@ -168,6 +177,12 @@
     </ClInclude>
     <ClInclude Include="WallRight.h">
       <Filter>GameCode</Filter>
+    </ClInclude>
+    <ClInclude Include="FillerBox.h">
+      <Filter>ArtClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="RustGirder.h">
+      <Filter>ArtClasses</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

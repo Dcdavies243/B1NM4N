@@ -16,6 +16,8 @@
 #include "FanTarget.h"
 #include "TreatsTool.h"
 #include "Dog.h"
+#include "FillerBox.h"
+#include "RustGirder.h"
 
 
 //Library Includes
@@ -27,6 +29,7 @@ Level::Level()
 	, m_player(nullptr)
 	, m_updateList()
 	, m_WorldList()
+	, m_BackgroundList()
 	, m_UIList()
 	, m_collisionList()
 	, centre(960, 540)
@@ -38,21 +41,24 @@ Level::Level()
 
 void Level::Draw(sf::RenderTarget& _target)
 {
-	//Draw Background
+	//TODO: Draw Background
 	
-	// TODO: Draw game objects
-
 	//Create and update camera
 	_target.setView(camera);
 
 	// Draw UI to the window
-	//_target.setView(_target.getDefaultView());
 	
 
 	for (int i = 0; i < m_UIList.size(); ++i)
 	{
 		if (m_UIList[i]->IsActive())
 			m_UIList[i]->Draw(_target);
+	}
+
+	for (int i = 0; i < m_BackgroundList.size(); ++i)
+	{
+		if (m_BackgroundList[i]->IsActive())
+			m_BackgroundList[i]->Draw(_target);
 	}
 
 	for (int i = 0; i < m_WorldList.size(); ++i)
@@ -71,6 +77,12 @@ void Level::Update(sf::Time _frameTime)
 	{
 		if (m_WorldList[i]->IsActive())
 			m_WorldList[i]->Update(_frameTime);
+	}
+
+	for (int i = 0; i < m_BackgroundList.size(); ++i)
+	{
+		if (m_BackgroundList[i]->IsActive())
+			m_BackgroundList[i]->Update(_frameTime);
 	}
 
 	for (int i = 0; i < m_UIList.size(); ++i)
@@ -120,6 +132,7 @@ void Level::LoadLevel(int _leveltoLoad)
 	//Clear out our lists
 	m_updateList.clear();
 	m_WorldList.clear();
+	m_BackgroundList.clear();
 	m_UIList.clear();
 	m_collisionList.clear();
 
@@ -175,6 +188,9 @@ void Level::LoadLevel(int _leveltoLoad)
 			y += Y_SPACE;
 			x = 0;
 		}
+		///////////////////////////////////////////////////////////
+		//////                World List                    ///////
+		///////////////////////////////////////////////////////////
 		else if (ch == 'P')
 		{
 			aPlayer->SetPosition(x, y);
@@ -256,6 +272,21 @@ void Level::LoadLevel(int _leveltoLoad)
 			m_updateList.push_back(aFanTarget);
 			m_WorldList.push_back(aFanTarget);
 			m_collisionList.push_back(std::make_pair(aPlayer, aFanTarget));
+		}
+		///////////////////////////////////////////////////////////
+		////                Background List                 ///////
+		///////////////////////////////////////////////////////////
+		else if (ch == '*')
+		{
+			FillerBox* aFillerBox = new FillerBox();
+			aFillerBox->SetPosition(x, y);
+			m_BackgroundList.push_back(aFillerBox);
+		}
+		else if (ch == '^')
+		{
+			RustGirder* aRustGirder = new RustGirder();
+			aRustGirder->SetPosition(x, y);
+			m_BackgroundList.push_back(aRustGirder);
 		}
 		else if (ch == '-')
 		{
