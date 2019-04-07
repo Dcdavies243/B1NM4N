@@ -19,6 +19,7 @@
 #include "FillerBox.h"
 #include "RustGirder.h"
 #include "TutSign.h"
+#include "Foreground.h"
 
 	//Library Includes
 #include <iostream>
@@ -30,6 +31,7 @@
 	, m_updateList()
 	, m_WorldList()
 	, m_BackgroundList()
+	, m_ForegroundList()
 	, m_UIList()
 	, m_collisionList()
 	, centre(960, 540)
@@ -68,6 +70,12 @@ void Level::Draw(sf::RenderTarget& _target)
 	{
 		if (m_WorldList[i]->IsActive())
 			m_WorldList[i]->Draw(_target);
+	}
+
+	for (int i = 0; i < m_ForegroundList.size(); ++i)
+	{
+		if (m_ForegroundList[i]->IsActive())
+			m_ForegroundList[i]->Draw(_target);
 	}
 
 }
@@ -131,6 +139,7 @@ void Level::LoadLevel(int _leveltoLoad)
 	m_updateList.clear();
 	m_BackgroundList.clear();
 	m_WorldList.clear();
+	m_ForegroundList.clear();
 	m_UIList.clear();
 	m_collisionList.clear();
 
@@ -290,7 +299,15 @@ void Level::LoadLevel(int _leveltoLoad)
 			aTutSign->SetPosition(x, y);
 			m_BackgroundList.push_back(aTutSign);
 		}
-
+		///////////////////////////////////////////////////////////
+		////                Foreground List                 ///////
+		///////////////////////////////////////////////////////////
+		else if (ch == '$')
+		{
+			Foreground* aForeground = new Foreground();
+			aForeground->SetPosition(x, y);
+			m_ForegroundList.push_back(aForeground);
+		}
 		else if (ch == '-')
 		{
 			//Do nothing - empty space

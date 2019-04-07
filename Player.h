@@ -61,6 +61,9 @@ private:
 	bool fanActive;
 
 	bool treatActive;
+
+	sf::Vector2f topPositionPrev;
+
 	sf::Vector2f treatTarget;
 
 

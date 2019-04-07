@@ -72,6 +72,11 @@ void Player::Update(sf::Time _frameTime)
 		Kill();
 	}
 
+	topPositionPrev = m_top->GetPosition();
+
+	//Update tools for animation
+	m_fantool->Update(_frameTime);
+
 	//Call the update function manually on the parent class
 	//This actually moves the character
 	MovingObject::Update(_frameTime);
@@ -240,7 +245,7 @@ void Player::Collide(GameObject& _collider)
 
 		if (topCollider.intersects(castFloor->GetBounds()))
 		{
-			m_top->SetPosition(m_position.x, m_top->GetPosition().y + 1);
+			m_top->SetPosition(m_position.x, topPositionPrev.y);
 		}
 	}
 
@@ -266,6 +271,7 @@ void Player::Collide(GameObject& _collider)
 		if (topCollider.intersects(castGrabberBox->GetBounds()))
 		{
 			m_bottom->SetPosition(m_previousPosition.x, m_position.y);
+			m_top->SetPosition(m_position.x, topPositionPrev.y);
 			m_grabbing = true;
 			m_grabposition = castGrabberBox->GetPosition();
 		}
