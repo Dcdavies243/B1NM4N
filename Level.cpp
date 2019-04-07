@@ -18,6 +18,7 @@
 #include "Dog.h"
 #include "FillerBox.h"
 #include "RustGirder.h"
+#include "TutSign.h"
 
 
 //Library Includes
@@ -107,11 +108,12 @@ void Level::Update(sf::Time _frameTime)
 	}
 
 	// Draw game world to the window
-	if (m_player->GetPosition().y <= 1200)
+	if (m_player->GetPosition().y < 1200)
 	{
 		camera.setCenter(m_player->GetPosition().x, m_player->GetPosition().y - 300);
 	}
-	else
+
+	if (m_player->GetPosition().y == 1200)
 	{
 		camera.setCenter(m_player->GetPosition().x, 1150);
 	}
@@ -287,6 +289,12 @@ void Level::LoadLevel(int _leveltoLoad)
 			RustGirder* aRustGirder = new RustGirder();
 			aRustGirder->SetPosition(x, y);
 			m_BackgroundList.push_back(aRustGirder);
+		}
+		else if (ch == '@')
+		{
+		TutSign* aTutSign = new TutSign();
+		aTutSign->SetPosition(x, y);
+		m_BackgroundList.push_back(aTutSign);
 		}
 		else if (ch == '-')
 		{

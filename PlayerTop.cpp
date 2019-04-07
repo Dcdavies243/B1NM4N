@@ -8,7 +8,7 @@
 #define SPEED 200.0f
 
 PlayerTop::PlayerTop()
-	: SpriteObject() //Initialise base class
+	: MovingObject() //Initialise base class
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/PlayerTop.png"));
 

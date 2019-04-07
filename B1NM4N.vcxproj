@@ -148,6 +148,7 @@
     <ClCompile Include="RustGirder.cpp" />
     <ClCompile Include="TreatsPickup.cpp" />
     <ClCompile Include="TreatsTool.cpp" />
+    <ClCompile Include="TutSign.cpp" />
     <ClCompile Include="Wall.cpp" />
     <ClCompile Include="WallRight.cpp" />
   </ItemGroup>
@@ -176,6 +177,7 @@
     <ClInclude Include="PlayerBottom.h" />
     <ClInclude Include="PlayerTop.h" />
     <ClInclude Include="TreatsTool.h" />
+    <ClInclude Include="TutSign.h" />
     <ClInclude Include="Wall.h" />
     <ClInclude Include="WallRight.h" />
   </ItemGroup>

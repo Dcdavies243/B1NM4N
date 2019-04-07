@@ -55,6 +55,8 @@ private:
 	bool m_treats;
 	bool m_falling;
 
+	float m_fallSpeed;
+
 	//Tool variables
 	bool fanActive;
 
@@ -85,6 +87,10 @@ private:
 	//Tool upgrades
 	FanTool* m_fantool;
 	TreatsTool* m_treatstool;
+
+	//Colliders
+	sf::FloatRect topCollider;
+
 
 	//TODO: AnimationSystem
 

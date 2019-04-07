@@ -29,6 +29,7 @@ Player::Player()
 	, m_treatstool(nullptr)
 	, m_grabbing(false)
 	, m_falling()
+	, m_fallSpeed(0.0f)
 	, fanActive(false)
 	, m_offset(0, 30.0f)
 	, fanOffset(55, -40)
@@ -56,12 +57,20 @@ void Player::Update(sf::Time _frameTime)
 {
 	//Assume no keys are pressed
 	m_velocity.x = 0.0f;
-	m_velocity.y = SPEED;
+	m_velocity.y = m_fallSpeed;
 
 	Input();
 
+	m_fallSpeed += (125.0f * (3.0f * _frameTime.asSeconds()));
+
 	//TODO: Create gravity effect
 
+	//Kill Z
+	if (m_position.y >= 2000)
+	{
+		m_fallSpeed = 0.0f;
+		Kill();
+	}
 
 	//Call the update function manually on the parent class
 	//This actually moves the character
@@ -201,6 +210,8 @@ void Player::Draw(sf::RenderTarget& _target)
 
 sf::FloatRect Player::GetBounds()
 {
+	topCollider = m_top->GetBounds();
+
 	sf::FloatRect combinedBounds;
 	combinedBounds.left = std::min(m_top->GetBounds().left, m_bottom->GetBounds().left);
 	combinedBounds.top = std::min(m_top->GetBounds().top, m_bottom->GetBounds().top);
@@ -217,8 +228,6 @@ sf::FloatRect Player::GetBounds()
 void Player::Collide(GameObject& _collider)
 {
 
-	sf::FloatRect topCollider = m_top->GetBounds();
-
 	Floor* castFloor = dynamic_cast<Floor*>(&_collider);
 
 	if (castFloor != nullptr)
@@ -226,8 +235,12 @@ void Player::Collide(GameObject& _collider)
 		//We hit a wall
 		//Return to previous position outside floor bounds
 
-		m_bottom->SetPosition(m_position.x,m_previousPosition.y);
+		m_fallSpeed = 0.0f;
 
+		if (topCollider.intersects(castFloor->GetBounds()))
+		{
+			m_top->SetPosition(m_position.x, m_top->GetPosition().y + 1);
+		}
 	}
 
 	Wall* castWall = dynamic_cast<Wall*>(&_collider);
@@ -238,7 +251,7 @@ void Player::Collide(GameObject& _collider)
 		//We hit a wall
 		//Return to previous position outside wall bounds
 
-		m_bottom->SetPosition(m_previousPosition);
+		m_bottom->SetPosition(m_previousPosition.x, m_position.y);
 
 	}
 
@@ -251,6 +264,7 @@ void Player::Collide(GameObject& _collider)
 		//Set boolean to allow us to grab
 		if (topCollider.intersects(castGrabberBox->GetBounds()))
 		{
+			m_bottom->SetPosition(m_previousPosition.x, m_position.y);
 			m_grabbing = true;
 			m_grabposition = castGrabberBox->GetPosition();
 		}
@@ -260,7 +274,7 @@ void Player::Collide(GameObject& _collider)
 			m_grabposition = m_bottom->GetPosition();
 		}
 
-		m_bottom->SetPosition(m_position.x, m_previousPosition.y);
+		m_fallSpeed = 0.0f;
 
 	}
 

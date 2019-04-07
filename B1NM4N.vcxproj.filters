@@ -104,6 +104,9 @@
     <ClCompile Include="RustGirder.cpp">
       <Filter>ArtClasses</Filter>
     </ClCompile>
+    <ClCompile Include="TutSign.cpp">
+      <Filter>ArtClasses</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Animation.h">
@@ -182,6 +185,9 @@
       <Filter>ArtClasses</Filter>
     </ClInclude>
     <ClInclude Include="RustGirder.h">
+      <Filter>ArtClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="TutSign.h">
       <Filter>ArtClasses</Filter>
     </ClInclude>
   </ItemGroup>
