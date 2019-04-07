@@ -1,4 +1,5 @@
 #include "Framework/AssetManager.h"
+#include "Floor.h"
 #include "FanTool.h"
 
 //Constants
@@ -25,7 +26,7 @@ FanTool::FanTool()
 	activeTool.AddFrame(AssetManager::GetTexture("graphics/FanItemTool/sprite_7.png"));
 	activeTool.AddFrame(AssetManager::GetTexture("graphics/FanItemTool/sprite_8.png"));
 
-	activeTool.SetPlayBackSpeed(20);
+	activeTool.SetPlayBackSpeed(10);
 	activeTool.SetLoop(true);
 
 }

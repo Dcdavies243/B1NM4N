@@ -32,7 +32,7 @@ Player::Player()
 	, m_fallSpeed(0.0f)
 	, fanActive(false)
 	, m_offset(0, 30.0f)
-	, fanOffset(55, -40)
+	, fanOffset(55, 0)
 	, treatsOffset(0, 0)
 {
 
@@ -123,6 +123,7 @@ void Player::Input()
 		flipped = false;
 
 		treatsOffset = sf::Vector2f(0, 0);
+
 
 	}
 
