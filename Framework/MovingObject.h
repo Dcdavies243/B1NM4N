@@ -1,7 +1,7 @@
 #pragma once
 
-// Project Includes
-#include "SpriteObject.h"
+//Project Includes
+#include ""
 
 class MovingObject : public SpriteObject
 {
@@ -10,11 +10,11 @@ public:
 
 	MovingObject();
 
-	// Overriding Methods
+	//Overriding Methods
 	void Update(sf::Time _frameTime);
 
 protected:
 
-	sf::Vector2f m_velocity; // pixels per second
+	sf::Vector2f m_velocity; //pixels per second
 	sf::Vector2f m_previousPosition;
 };

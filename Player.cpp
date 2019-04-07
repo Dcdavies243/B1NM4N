@@ -51,7 +51,7 @@ Player::Player()
 	//TODO: Create individual animations
 
 }
-                                                                                                                                                                                                                                                                                                                                  
+
 //Overriding Methods
 void Player::Update(sf::Time _frameTime)
 {
@@ -110,10 +110,10 @@ void Player::Input()
 
 		flipped = true;
 
-		treatsOffset = sf::Vector2f(0,0);
+		treatsOffset = sf::Vector2f(0, 0);
 	}
 
-	
+
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
 		fanOffset = sf::Vector2f(40, fanOffset.y);
@@ -161,7 +161,7 @@ sf::Vector2f Player::GetPosition()
 
 void Player::SetPosition(float _x, float _y)
 {
-	SetPosition(sf::Vector2f(_x,_y));
+	SetPosition(sf::Vector2f(_x, _y));
 }
 
 void Player::SetPosition(sf::Vector2f _position)
@@ -172,7 +172,7 @@ void Player::SetPosition(sf::Vector2f _position)
 	m_bottom->SetPosition(_position);
 
 	m_fantool->SetPosition(_position + fanOffset);
-	
+
 	if (treatActive)
 	{
 		m_treatstool->SetPosition(treatTarget);
@@ -247,7 +247,7 @@ void Player::Collide(GameObject& _collider)
 	Wall* castWall = dynamic_cast<Wall*>(&_collider);
 	WallRight* castWallRight = dynamic_cast<WallRight*>(&_collider);
 
-	if (castWall != nullptr || castWallRight !=nullptr)
+	if (castWall != nullptr || castWallRight != nullptr)
 	{
 		//We hit a wall
 		//Return to previous position outside wall bounds

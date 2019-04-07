@@ -80,6 +80,9 @@ private:
 	//Level
 	Level* m_level;
 
+	//Colliders
+	sf::FloatRect topCollider;
+
 	//Body Parts
 	PlayerTop* m_top;
 	PlayerBottom* m_bottom;
@@ -87,10 +90,6 @@ private:
 	//Tool upgrades
 	FanTool* m_fantool;
 	TreatsTool* m_treatstool;
-
-	//Colliders
-	sf::FloatRect topCollider;
-
 
 	//TODO: AnimationSystem
 
