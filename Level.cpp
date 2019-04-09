@@ -20,6 +20,7 @@
 #include "RustGirder.h"
 #include "TutSign.h"
 #include "Foreground.h"
+#include "Background.h"
 
 	//Library Includes
 #include <iostream>
@@ -43,8 +44,6 @@
 
 void Level::Draw(sf::RenderTarget& _target)
 {
-	//Draw Background
-
 	// TODO: Draw game objects
 
 	//Create and update camera
@@ -281,6 +280,12 @@ void Level::LoadLevel(int _leveltoLoad)
 		///////////////////////////////////////////////////////////
 		////                Background List                 ///////
 		///////////////////////////////////////////////////////////
+		else if (ch == '!')
+		{
+			Background* aBackground = new Background();
+			aBackground->SetPosition(x, y);
+			m_BackgroundList.push_back(aBackground);
+		}
 		else if (ch == '*')
 		{
 			FillerBox* aFillerBox = new FillerBox();
