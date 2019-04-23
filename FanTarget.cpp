@@ -16,5 +16,7 @@ FanTarget::FanTarget()
 
 void FanTarget::Remove()
 {
+	
 	m_active = false;
+
 }

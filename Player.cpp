@@ -32,7 +32,7 @@ Player::Player()
 	, m_fallSpeed(0.0f)
 	, fanActive(false)
 	, m_offset(0, 30.0f)
-	, fanOffset(55, 0)
+	, fanOffset(55, -35)
 	, treatsOffset(0, 0)
 {
 
