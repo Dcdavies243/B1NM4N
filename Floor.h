@@ -9,8 +9,9 @@ class Floor : public SpriteObject
 public:
 	Floor();
 
+	void SetSprite();
+	void Update();
 
-private:
 
 
 };

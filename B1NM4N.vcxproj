@@ -131,7 +131,6 @@
     <ClCompile Include="FanTool.cpp" />
     <ClCompile Include="FillerBox.cpp" />
     <ClCompile Include="Floor.cpp" />
-    <ClCompile Include="Floor2.cpp" />
     <ClCompile Include="Foreground.cpp" />
     <ClCompile Include="Framework\Animation.cpp" />
     <ClCompile Include="Framework\AnimationSystem.cpp" />
@@ -161,7 +160,6 @@
     <ClInclude Include="FanTarget.h" />
     <ClInclude Include="FanTool.h" />
     <ClInclude Include="FillerBox.h" />
-    <ClInclude Include="Floor2.h" />
     <ClInclude Include="Foreground.h" />
     <ClInclude Include="GrabberBox.h" />
     <ClInclude Include="RustGirder.h" />
