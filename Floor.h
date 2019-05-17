@@ -9,9 +9,8 @@ class Floor : public SpriteObject
 public:
 	Floor();
 
-	void SetSprite();
-	void Update();
+	void SetSprite(int _currentLevel);
 
-
+	
 
 };

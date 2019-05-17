@@ -5,7 +5,6 @@
 #include "Wall.h"
 #include "WallRight.h"
 #include "Floor.h"
-#include "Floor2.h"
 #include "PlayerTop.h"
 #include "PlayerBottom.h"
 #include "FanTool.h"
@@ -260,20 +259,6 @@ void Player::Collide(GameObject& _collider)
 		}
 	}
 
-	Floor2* castFloor2 = dynamic_cast<Floor2*>(&_collider);
-
-	if (castFloor2 != nullptr)
-	{
-		//We hit a wall
-		//Return to previous position outside floor bounds
-
-		m_fallSpeed = 0.0f;
-
-		if (topCollider.intersects(castFloor2->GetBounds()))
-		{
-			m_top->SetPosition(m_position.x, topPositionPrev.y);
-		}
-	}
 
 	Wall* castWall = dynamic_cast<Wall*>(&_collider);
 	WallRight* castWallRight = dynamic_cast<WallRight*>(&_collider);

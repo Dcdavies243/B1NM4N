@@ -39,7 +39,7 @@
 	, halfSize(400, 400)
 	, camera()
 {
-	LoadLevel(2);
+	LoadLevel(1);
 }
 
 void Level::Draw(sf::RenderTarget& _target)
@@ -233,6 +233,7 @@ void Level::LoadLevel(int _leveltoLoad)
 		{
 			Floor* aFloor = new Floor();
 			aFloor->SetPosition(x, y);
+			aFloor->SetSprite(m_currentLevel);
 			m_updateList.push_back(aFloor);
 			m_WorldList.push_back(aFloor);
 			m_collisionList.push_back(std::make_pair(aPlayer, aFloor));
@@ -336,6 +337,7 @@ void Level::LoadLevel(int _leveltoLoad)
 	inFile.close();
 
 }
+
 
 void Level::ReloadLevel()
 {
