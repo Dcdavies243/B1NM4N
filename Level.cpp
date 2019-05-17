@@ -8,6 +8,7 @@
 #include "Wall.h"
 #include "WallRight.h"
 #include "Floor.h"
+#include "Floor2.h"
 #include "FanPickup.h"
 #include "TreatsPickup.h"
 #include "B1NM3N.h"
@@ -39,7 +40,7 @@
 	, halfSize(400, 400)
 	, camera()
 {
-	LoadLevel(1);
+	LoadLevel(2);
 }
 
 void Level::Draw(sf::RenderTarget& _target)
@@ -194,6 +195,10 @@ void Level::LoadLevel(int _leveltoLoad)
 			y += Y_SPACE;
 			x = 0;
 		}
+		///////////////////////////////////////////////////////////
+		////              Player and Enemy Sprites            /////
+		////                                                  /////
+		///////////////////////////////////////////////////////////
 		else if (ch == 'P')
 		{
 			aPlayer->SetPosition(x, y);
@@ -220,6 +225,11 @@ void Level::LoadLevel(int _leveltoLoad)
 			m_WorldList.push_back(aB1NM3N);
 			m_collisionList.push_back(std::make_pair(aPlayer, aB1NM3N));
 		}
+		///////////////////////////////////////////////////////////
+		////                   Level Sprites                  /////
+		////    May change, at moment seperate for levels     /////
+		///////////////////////////////////////////////////////////
+
 		else if (ch == 'F')
 		{
 			Floor* aFloor = new Floor();
@@ -227,6 +237,14 @@ void Level::LoadLevel(int _leveltoLoad)
 			m_updateList.push_back(aFloor);
 			m_WorldList.push_back(aFloor);
 			m_collisionList.push_back(std::make_pair(aPlayer, aFloor));
+		}
+		else if (ch == 'V')
+		{
+			Floor2* aFloor2 = new Floor2();
+			aFloor2->SetPosition(x, y);
+			m_updateList.push_back(aFloor2);
+			m_WorldList.push_back(aFloor2);
+			m_collisionList.push_back(std::make_pair(aPlayer, aFloor2));
 		}
 		else if (ch == 'w')
 		{

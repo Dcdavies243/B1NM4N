@@ -1,12 +1,12 @@
 //Project Includes
-#include "Floor.h"
+#include "Floor2.h"
 #include "Player.h"
 #include "Framework/AssetManager.h"
 
-Floor::Floor()
+Floor2::Floor2()
 	: SpriteObject() //Initialise parent class
 
 {
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/Level1Floor.png"));
+	m_sprite.setTexture(AssetManager::GetTexture("graphics/Level2Floor.png"));
 }
 

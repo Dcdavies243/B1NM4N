@@ -4,10 +4,10 @@
 #include "Framework/SpriteObject.h"
 
 
-class Floor : public SpriteObject
+class Floor2 : public SpriteObject
 {
 public:
-	Floor();
+	Floor2();
 
 
 private:

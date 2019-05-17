@@ -32,7 +32,7 @@ private:
 
 	sf::Vector2f m_position;
 	sf::Vector2f m_playerPos;
-
+	sf::Vector2f m_treatPos;
 
 	sf::Vector2f m_direction;
 	sf::Vector2f m_normalised;

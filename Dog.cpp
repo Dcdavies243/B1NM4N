@@ -44,16 +44,25 @@ void Dog::MoveEnemy()
 {
 	m_playerPos = castPlayer->GetPosition();
 
-	m_direction = (m_playerPos - m_position);
+	if (castPlayer->GetTreatActive())
+	{
+		m_direction = (castPlayer->GetTreatLocation() - m_position);
+
+		SetPosition(m_position.x + (m_normalised.x * speed), m_position.y);
+	}
+	else
+	{
+		if (m_position.x < (m_playerPos.x + 300) && m_position.x > m_playerPos.x || m_position.x > (m_playerPos.x - 300) && m_position.x < m_playerPos.x)
+		{
+			SetPosition(m_position.x + (m_normalised.x * speed), m_position.y);
+		}
+
+		m_direction = (m_playerPos - m_position);
+	}
 
 	m_magnitude = (sqrt(pow(m_direction.x, 2) + pow(m_direction.y, 2)));
 
 	m_normalised = sf::Vector2f(m_direction.x / m_magnitude, m_direction.y / m_magnitude);
-
-	if (m_playerPos.y = m_position.y)
-	{
-		SetPosition(m_position.x + (m_normalised.x * speed), m_position.y);
-	}
 
 }
 

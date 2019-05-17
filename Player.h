@@ -32,6 +32,8 @@ public:
 
 
 	//Public Player Methods
+	bool GetTreatActive();
+	sf::Vector2f GetTreatLocation();
 
 	//Pickup Methods
 	bool HasFan();
