@@ -12,10 +12,11 @@ public:
 	GrabberBox();
 
 	//Overriding Methods
-
+	void SetSprite(int _currentLevel);
 
 private:
 
 	//TODO: AnimationSystem
+
 
 };

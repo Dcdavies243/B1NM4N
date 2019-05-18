@@ -7,6 +7,17 @@ WallRight::WallRight()
 	: SpriteObject() //Initialise parent class
 
 {
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/Level1WallRight.png"));
 
+}
+
+void WallRight::SetSprite(int _currentLevel)
+{
+	if (_currentLevel == 1)
+	{
+		m_sprite.setTexture(AssetManager::GetTexture("graphics/Level1WallRight.png"));
+	}
+	else if (_currentLevel == 2)
+	{
+		m_sprite.setTexture(AssetManager::GetTexture("graphics/Level2WallLeft.png"));
+	}
 }

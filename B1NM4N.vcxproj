@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{c2523a04-c1d6-4a70-a2c6-299cf83e42a9}</ProjectGuid>
     <RootNamespace>B1NM4N</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -140,6 +140,7 @@
     <ClCompile Include="Framework\TextObject.cpp" />
     <ClCompile Include="GrabberBox.cpp" />
     <ClCompile Include="Level.cpp" />
+    <ClCompile Include="LevelChanger.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MovingObject.cpp" />
     <ClCompile Include="Pickup.cpp" />
@@ -147,6 +148,7 @@
     <ClCompile Include="PlayerBottom.cpp" />
     <ClCompile Include="PlayerTop.cpp" />
     <ClCompile Include="RustGirder.cpp" />
+    <ClCompile Include="StoneFloor.cpp" />
     <ClCompile Include="TreatsPickup.cpp" />
     <ClCompile Include="TreatsTool.cpp" />
     <ClCompile Include="TutSign.cpp" />
@@ -162,7 +164,9 @@
     <ClInclude Include="FillerBox.h" />
     <ClInclude Include="Foreground.h" />
     <ClInclude Include="GrabberBox.h" />
+    <ClInclude Include="LevelChanger.h" />
     <ClInclude Include="RustGirder.h" />
+    <ClInclude Include="StoneFloor.h" />
     <ClInclude Include="TreatsPickup.h" />
     <ClInclude Include="FanPickup.h" />
     <ClInclude Include="Floor.h" />
@@ -186,6 +190,7 @@
   <ItemGroup>
     <Text Include="levels\Level1.txt" />
     <Text Include="levels\Level2.txt" />
+    <Text Include="levels\Level3.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

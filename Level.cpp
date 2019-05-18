@@ -8,6 +8,7 @@
 #include "Wall.h"
 #include "WallRight.h"
 #include "Floor.h"
+#include "StoneFloor.h"
 #include "FanPickup.h"
 #include "TreatsPickup.h"
 #include "B1NM3N.h"
@@ -21,6 +22,7 @@
 #include "TutSign.h"
 #include "Foreground.h"
 #include "Background.h"
+#include "LevelChanger.h"
 
 	//Library Includes
 #include <iostream>
@@ -213,7 +215,7 @@ void Level::LoadLevel(int _leveltoLoad)
 			m_updateList.push_back(aDog);
 			m_WorldList.push_back(aDog);
 			m_collisionList.push_back(std::make_pair(aPlayer, aDog));
-			m_collisionList.push_back(std::make_pair(aDog, aTreat));
+			m_collisionList.push_back(std::make_pair(aTreat, aDog));
 		}
 		else if (ch == 'B')
 		{
@@ -238,10 +240,19 @@ void Level::LoadLevel(int _leveltoLoad)
 			m_WorldList.push_back(aFloor);
 			m_collisionList.push_back(std::make_pair(aPlayer, aFloor));
 		}
+		else if (ch == 'S')
+		{
+			StoneFloor* aStoneFloor = new StoneFloor();
+			aStoneFloor->SetPosition(x, y);
+			m_updateList.push_back(aStoneFloor);
+			m_WorldList.push_back(aStoneFloor);
+			m_collisionList.push_back(std::make_pair(aPlayer, aStoneFloor));
+		}
 		else if (ch == 'w')
 		{
 			Wall* aWall = new Wall();
 			aWall->SetPosition(x, y);
+			aWall->SetSprite(m_currentLevel);
 			m_updateList.push_back(aWall);
 			m_WorldList.push_back(aWall);
 			m_collisionList.push_back(std::make_pair(aPlayer, aWall));
@@ -250,6 +261,7 @@ void Level::LoadLevel(int _leveltoLoad)
 		{
 			WallRight* aWallRight = new WallRight();
 			aWallRight->SetPosition(x, y);
+			aWallRight->SetSprite(m_currentLevel);
 			m_updateList.push_back(aWallRight);
 			m_WorldList.push_back(aWallRight);
 			m_collisionList.push_back(std::make_pair(aPlayer, aWallRight));
@@ -258,6 +270,7 @@ void Level::LoadLevel(int _leveltoLoad)
 		{
 			GrabberBox* aGrabberBox = new GrabberBox();
 			aGrabberBox->SetPosition(x, y);
+			aGrabberBox->SetSprite(m_currentLevel);
 			m_updateList.push_back(aGrabberBox);
 			m_WorldList.push_back(aGrabberBox);
 			m_collisionList.push_back(std::make_pair(aPlayer, aGrabberBox));
@@ -286,10 +299,19 @@ void Level::LoadLevel(int _leveltoLoad)
 			m_WorldList.push_back(aFanTarget);
 			m_collisionList.push_back(std::make_pair(aPlayer, aFanTarget));
 		}
+		else if (ch == '+')
+		{
+			LevelChanger* aLevelChanger = new LevelChanger();
+			aLevelChanger->SetPosition(x, y);
+			m_updateList.push_back(aLevelChanger);
+			m_WorldList.push_back(aLevelChanger);
+			m_collisionList.push_back(std::make_pair(aLevelChanger, aPlayer));
+		}
 
 		///////////////////////////////////////////////////////////
 		////                Background List                 ///////
 		///////////////////////////////////////////////////////////
+
 		else if (ch == '!')
 		{
 			Background* aBackground = new Background();
@@ -306,6 +328,7 @@ void Level::LoadLevel(int _leveltoLoad)
 		{
 			RustGirder* aRustGirder = new RustGirder();
 			aRustGirder->SetPosition(x, y);
+			aRustGirder->SetSprite(m_currentLevel);
 			m_BackgroundList.push_back(aRustGirder);
 		}
 		else if (ch == '@')

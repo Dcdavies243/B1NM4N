@@ -87,6 +87,7 @@ private:
 
 	//Colliders
 	sf::FloatRect topCollider;
+	sf::FloatRect treatCollider;
 
 	//Body Parts
 	PlayerTop* m_top;

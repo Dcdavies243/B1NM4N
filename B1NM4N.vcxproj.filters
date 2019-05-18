@@ -110,6 +110,12 @@
     <ClCompile Include="Background.cpp">
       <Filter>ArtClasses</Filter>
     </ClCompile>
+    <ClCompile Include="LevelChanger.cpp">
+      <Filter>GameCode</Filter>
+    </ClCompile>
+    <ClCompile Include="StoneFloor.cpp">
+      <Filter>GameCode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Animation.h">
@@ -196,12 +202,21 @@
     <ClInclude Include="Background.h">
       <Filter>ArtClasses</Filter>
     </ClInclude>
+    <ClInclude Include="LevelChanger.h">
+      <Filter>GameCode</Filter>
+    </ClInclude>
+    <ClInclude Include="StoneFloor.h">
+      <Filter>GameCode</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="levels\Level1.txt">
       <Filter>Levels</Filter>
     </Text>
     <Text Include="levels\Level2.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="levels\Level3.txt">
       <Filter>Levels</Filter>
     </Text>
   </ItemGroup>

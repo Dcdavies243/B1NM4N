@@ -8,4 +8,5 @@ class RustGirder : public SpriteObject
 public:
 	RustGirder();
 
+	void SetSprite(int _currentLevel);
 };

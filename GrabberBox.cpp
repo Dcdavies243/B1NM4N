@@ -1,4 +1,5 @@
 #include "Framework/AssetManager.h"
+#include "Player.h"
 #include "GrabberBox.h"
 
 //Constants
@@ -7,10 +8,17 @@
 GrabberBox::GrabberBox()
 	: SpriteObject() //Initialise base class
 {
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/Level1Grabber.png"));
 
-	//TODO: Set up the animation
+}
 
-	//TODO: Create individual animations
-
+void GrabberBox::SetSprite(int _currentLevel)
+{
+	if (_currentLevel == 1)
+	{
+		m_sprite.setTexture(AssetManager::GetTexture("graphics/Level1Grabber.png"));
+	}
+	else if (_currentLevel == 2)
+	{
+		m_sprite.setTexture(AssetManager::GetTexture("graphics/Level2WallLeft.png"));
+	}
 }

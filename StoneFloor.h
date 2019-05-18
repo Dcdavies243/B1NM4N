@@ -3,10 +3,10 @@
 //Project Includes
 #include "Framework/SpriteObject.h"
 
-class Wall : public SpriteObject
+
+class StoneFloor : public SpriteObject
 {
 public:
-	Wall();
+	StoneFloor();
 
-	void SetSprite(int _currentLevel);
 };

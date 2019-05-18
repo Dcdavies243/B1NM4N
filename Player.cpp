@@ -5,6 +5,7 @@
 #include "Wall.h"
 #include "WallRight.h"
 #include "Floor.h"
+#include "StoneFloor.h"
 #include "PlayerTop.h"
 #include "PlayerBottom.h"
 #include "FanTool.h"
@@ -13,6 +14,7 @@
 #include "Dog.h"
 #include "GrabberBox.h"
 #include "FanTarget.h"
+#include "LevelChanger.h"
 
 
 
@@ -228,6 +230,8 @@ sf::FloatRect Player::GetBounds()
 {
 	topCollider = m_top->GetBounds();
 
+	treatCollider = m_treatstool->GetBounds();
+
 	sf::FloatRect combinedBounds;
 	combinedBounds.left = std::min(m_top->GetBounds().left, m_bottom->GetBounds().left);
 	combinedBounds.top = std::min(m_top->GetBounds().top, m_bottom->GetBounds().top);
@@ -254,6 +258,21 @@ void Player::Collide(GameObject& _collider)
 		m_fallSpeed = 0.0f;
 
 		if (topCollider.intersects(castFloor->GetBounds()))
+		{
+			m_top->SetPosition(m_position.x, topPositionPrev.y);
+		}
+	}
+
+	StoneFloor* castStoneFloor = dynamic_cast<StoneFloor*>(&_collider);
+
+	if (castStoneFloor != nullptr)
+	{
+		//We hit a wall
+		//Return to previous position outside floor bounds
+
+		m_fallSpeed = 0.0f;
+
+		if (topCollider.intersects(castStoneFloor->GetBounds()))
 		{
 			m_top->SetPosition(m_position.x, topPositionPrev.y);
 		}
@@ -327,7 +346,6 @@ void Player::Collide(GameObject& _collider)
 		//Kill player, reset level
 
 		Kill();
-
 	}
 }
 
@@ -360,8 +378,6 @@ void Player::UseTreat()
 {
 	treatActive = true;
 }
-
-
 
 void Player::Kill()
 {

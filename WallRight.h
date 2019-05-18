@@ -8,4 +8,5 @@ class WallRight : public SpriteObject
 public:
 	WallRight();
 
+	void SetSprite(int _currentLevel);
 };
