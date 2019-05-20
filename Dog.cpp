@@ -46,9 +46,12 @@ void Dog::MoveEnemy()
 
 	if (castPlayer->GetTreatActive())
 	{
-		m_direction = (castPlayer->GetTreatLocation() - m_position);
+		if (m_position.x < (castPlayer->GetTreatLocation().x + 300) && m_position.x > castPlayer->GetTreatLocation().x || m_position.x > (castPlayer->GetTreatLocation().x - 300) && m_position.x < castPlayer->GetTreatLocation().x)
+		{
+			m_direction = (castPlayer->GetTreatLocation() - m_position);
 
-		SetPosition(m_position.x + (m_normalised.x * speed), m_position.y);
+			SetPosition(m_position.x + (m_normalised.x * speed), m_position.y);
+		}
 	}
 	else
 	{

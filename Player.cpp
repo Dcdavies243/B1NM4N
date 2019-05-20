@@ -61,11 +61,12 @@ void Player::Update(sf::Time _frameTime)
 	m_velocity.x = 0.0f;
 	m_velocity.y = m_fallSpeed;
 
+	//Run Input Function
 	Input();
 
+	//Grtavity effect
 	m_fallSpeed += (125.0f * (3.0f * _frameTime.asSeconds()));
 
-	//TODO: Create gravity effect
 
 	//Kill Z
 	if (m_position.y >= 2000)

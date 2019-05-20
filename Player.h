@@ -45,6 +45,7 @@ public:
 	void UseFan();
 	void UseTreat();
 
+
 	void Kill();
 	void SetLevel(Level* _newLevel);
 	void AdvanceLevel();
