@@ -23,6 +23,7 @@
 #include "Foreground.h"
 #include "Background.h"
 #include "LevelChanger.h"
+#include "Leaves.h"
 
 	//Library Includes
 #include <iostream>
@@ -41,7 +42,7 @@
 	, halfSize(400, 400)
 	, camera()
 {
-	LoadLevel(2);
+	LoadLevel(1);
 }
 
 void Level::Draw(sf::RenderTarget& _target)
@@ -115,7 +116,7 @@ void Level::Update(sf::Time _frameTime)
 	// Draw game world to the window
 	if (m_player->GetPosition().y < 1200)
 	{
-		camera.setCenter(m_player->GetPosition().x, m_player->GetPosition().y - 300);
+		camera.setCenter(m_player->GetPosition().x, m_player->GetPosition().y - 200);
 	}
 
 	if (m_player->GetPosition().y == 1200)
@@ -345,6 +346,12 @@ void Level::LoadLevel(int _leveltoLoad)
 			Foreground* aForeground = new Foreground();
 			aForeground->SetPosition(x, y);
 			m_ForegroundList.push_back(aForeground);
+		}
+		else if (ch == '#')
+		{
+		Leaves* aLeaves = new Leaves();
+		aLeaves->SetPosition(x, y);
+		m_ForegroundList.push_back(aLeaves);
 		}
 		else if (ch == '-')
 		{

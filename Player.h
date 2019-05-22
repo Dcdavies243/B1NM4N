@@ -59,6 +59,8 @@ private:
 	bool m_falling;
 
 	float m_fallSpeed;
+	float m_treatSpeedX;
+	float m_treatSpeedY;
 
 	//Tool variables
 	bool fanActive;

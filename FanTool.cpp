@@ -13,7 +13,6 @@ FanTool::FanTool()
 	m_animationSystem.SetSprite(m_sprite);
 
 	// Create indvidual animations
-
 	Animation& activeTool = m_animationSystem.CreateAnimation("activeTool");
 
 	activeTool.AddFrame(AssetManager::GetTexture("graphics/FanItemTool/sprite_1.png"));
@@ -28,6 +27,7 @@ FanTool::FanTool()
 	activeTool.SetPlayBackSpeed(20);
 	activeTool.SetLoop(true);
 
+	m_animationSystem.Play("activeTool");
 }
 
 void FanTool::Update(sf::Time _frameTime)
@@ -37,7 +37,7 @@ void FanTool::Update(sf::Time _frameTime)
 
 void FanTool::RunAnimation()
 {
-	m_animationSystem.Play("activeTool");
+	//m_animationSystem.Play("activeTool");
 }
 
 void FanTool::Flip()

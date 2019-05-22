@@ -6,6 +6,6 @@ Background::Background()
 	: SpriteObject() //Initialise parent class
 
 {
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/BackgroundLevel2.png"));
+	m_sprite.setTexture(AssetManager::GetTexture("graphics/BackgroundLevel1.png"));
 
 }

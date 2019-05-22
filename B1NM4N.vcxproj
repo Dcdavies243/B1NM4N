@@ -139,6 +139,7 @@
     <ClCompile Include="Framework\SpriteObject.cpp" />
     <ClCompile Include="Framework\TextObject.cpp" />
     <ClCompile Include="GrabberBox.cpp" />
+    <ClCompile Include="Leaves.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="LevelChanger.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="FillerBox.h" />
     <ClInclude Include="Foreground.h" />
     <ClInclude Include="GrabberBox.h" />
+    <ClInclude Include="Leaves.h" />
     <ClInclude Include="LevelChanger.h" />
     <ClInclude Include="RustGirder.h" />
     <ClInclude Include="StoneFloor.h" />

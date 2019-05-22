@@ -116,6 +116,9 @@
     <ClCompile Include="StoneFloor.cpp">
       <Filter>GameCode</Filter>
     </ClCompile>
+    <ClCompile Include="Leaves.cpp">
+      <Filter>ArtClasses</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Animation.h">
@@ -207,6 +210,9 @@
     </ClInclude>
     <ClInclude Include="StoneFloor.h">
       <Filter>GameCode</Filter>
+    </ClInclude>
+    <ClInclude Include="Leaves.h">
+      <Filter>ArtClasses</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

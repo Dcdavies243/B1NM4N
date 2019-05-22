@@ -32,13 +32,13 @@ Player::Player()
 	, m_grabbing(false)
 	, m_falling()
 	, m_fallSpeed(0.0f)
+	, m_treatSpeedX(0.0f)
+	, m_treatSpeedY(0.0f)
 	, fanActive(false)
 	, m_offset(0, 30.0f)
 	, fanOffset(55, -35)
 	, treatsOffset(0, 0)
 {
-
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/GroundPlacehold.png"));
 
 	//Set up head and body
 	m_top = new PlayerTop();
@@ -66,7 +66,7 @@ void Player::Update(sf::Time _frameTime)
 
 	//Grtavity effect
 	m_fallSpeed += (125.0f * (3.0f * _frameTime.asSeconds()));
-
+	
 
 	//Kill Z
 	if (m_position.y >= 2000)
@@ -146,7 +146,6 @@ void Player::Input()
 	if (m_fan && m_offset.y == 30.0f && sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
 	{
 		fanActive = true;
-		m_fantool->RunAnimation();
 	}
 	else
 	{
@@ -347,6 +346,7 @@ void Player::Collide(GameObject& _collider)
 		//Kill player, reset level
 
 		Kill();
+
 	}
 }
 
