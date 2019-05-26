@@ -25,12 +25,12 @@ FanPickup::FanPickup()
 	idleItem.SetPlayBackSpeed(10);
 	idleItem.SetLoop(true);
 
-	//m_animationSystem.Play("idleItem");
+	m_animationSystem.Play("idleItem");
 }
 
 void FanPickup::Update(sf::Time _frameTime)
 {
-	//m_animationSystem.Update(_frameTime);
+	m_animationSystem.Update(_frameTime);
 }
 
 

@@ -10,8 +10,9 @@ class PlayerTop : public SpriteObject
 public:
 
 	PlayerTop();
-
 	//Overriding Methods
+
+
 ;
 private:
 

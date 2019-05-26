@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{c2523a04-c1d6-4a70-a2c6-299cf83e42a9}</ProjectGuid>
     <RootNamespace>B1NM4N</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -153,6 +153,9 @@
     <ClCompile Include="TreatsPickup.cpp" />
     <ClCompile Include="TreatsTool.cpp" />
     <ClCompile Include="TutSign.cpp" />
+    <ClCompile Include="TutSign2.cpp" />
+    <ClCompile Include="TutSign3.cpp" />
+    <ClCompile Include="UI.cpp" />
     <ClCompile Include="Wall.cpp" />
     <ClCompile Include="WallRight.cpp" />
   </ItemGroup>
@@ -186,6 +189,9 @@
     <ClInclude Include="PlayerTop.h" />
     <ClInclude Include="TreatsTool.h" />
     <ClInclude Include="TutSign.h" />
+    <ClInclude Include="TutSign2.h" />
+    <ClInclude Include="TutSign3.h" />
+    <ClInclude Include="UI.h" />
     <ClInclude Include="Wall.h" />
     <ClInclude Include="WallRight.h" />
   </ItemGroup>

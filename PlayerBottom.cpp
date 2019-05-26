@@ -9,10 +9,23 @@
 PlayerBottom::PlayerBottom()
 	: SpriteObject() //Initialise base class
 {
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/PlayerBottom.png"));
 
-	//TODO: Set up the animation
+	// Set up the animation
+	m_animationSystem.SetSprite(m_sprite);
 
-	//TODO: Create individual animations
+	// Create indvidual animations
+	Animation& bottomMove = m_animationSystem.CreateAnimation("bottomMove");
 
+	bottomMove.AddFrame(AssetManager::GetTexture("graphics/PlayerBottomSet/1.png"));
+	bottomMove.AddFrame(AssetManager::GetTexture("graphics/PlayerBottomSet/2.png"));
+
+	bottomMove.SetPlayBackSpeed(10);
+	bottomMove.SetLoop(true);
+
+	m_animationSystem.Play("bottomMove");
+}
+
+void PlayerBottom::Update(sf::Time _frameTime)
+{
+	m_animationSystem.Update(_frameTime);
 }

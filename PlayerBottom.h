@@ -12,9 +12,12 @@ public:
 	PlayerBottom();
 
 	//Overriding Methods
+	void Update(sf::Time _frameTime);
+
 
 private:
 
 	//TODO: AnimationSystem
 
+	AnimationSystem m_animationSystem;
 };

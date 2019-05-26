@@ -20,11 +20,13 @@
 #include "FillerBox.h"
 #include "RustGirder.h"
 #include "TutSign.h"
+#include "TutSign2.h"
+#include "TutSign3.h"
 #include "Foreground.h"
 #include "Background.h"
 #include "LevelChanger.h"
 #include "Leaves.h"
-
+#include "UI.h"
 	//Library Includes
 #include <iostream>
 #include <fstream>
@@ -338,6 +340,18 @@ void Level::LoadLevel(int _leveltoLoad)
 			aTutSign->SetPosition(x, y);
 			m_BackgroundList.push_back(aTutSign);
 		}
+		else if (ch == '~')
+		{
+			TutSign2* aTutSign2 = new TutSign2();
+			aTutSign2->SetPosition(x, y);
+			m_BackgroundList.push_back(aTutSign2);
+		}
+		else if (ch == '?')
+		{
+			TutSign3* aTutSign3 = new TutSign3();
+			aTutSign3->SetPosition(x, y);
+			m_BackgroundList.push_back(aTutSign3);
+		}
 		///////////////////////////////////////////////////////////
 		////                Foreground List                 ///////
 		///////////////////////////////////////////////////////////
@@ -365,6 +379,10 @@ void Level::LoadLevel(int _leveltoLoad)
 
 	//Close the file
 	inFile.close();
+
+	UI* aUI = new UI();
+	m_updateList.push_back(aUI);
+	m_UIList.push_back(aUI);
 
 }
 

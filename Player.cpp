@@ -79,6 +79,7 @@ void Player::Update(sf::Time _frameTime)
 
 	//Update tools for animation
 	m_fantool->Update(_frameTime);
+	m_bottom->Update(_frameTime);
 
 	//Call the update function manually on the parent class
 	//This actually moves the character
@@ -91,6 +92,7 @@ void Player::Input()
 {
 
 	sf::Vector2f m_topPosition = m_top->GetPosition();
+
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
@@ -119,6 +121,7 @@ void Player::Input()
 		flipped = true;
 
 		treatsOffset = sf::Vector2f(0, 0);
+
 	}
 
 
@@ -131,7 +134,6 @@ void Player::Input()
 		flipped = false;
 
 		treatsOffset = sf::Vector2f(0, 0);
-
 
 	}
 
@@ -329,6 +331,8 @@ void Player::Collide(GameObject& _collider)
 
 	B1NM3N* castB1NM3N = dynamic_cast<B1NM3N*>(&_collider);
 
+	Dog* castDog = dynamic_cast<Dog*>(&_collider);
+
 	if (castB1NM3N != nullptr)
 	{
 		//We hit an enemy B1NM4N
@@ -337,15 +341,12 @@ void Player::Collide(GameObject& _collider)
 		Kill();
 
 	}
-
-	Dog* castDog = dynamic_cast<Dog*>(&_collider);
-
-	if (castDog != nullptr)
+	else if (castDog != nullptr)
 	{
 		//We hit an enemy B1NM4N
 		//Kill player, reset level
 
-		Kill();
+		castDog->Kill();
 
 	}
 }
