@@ -17,6 +17,7 @@ public:
 	virtual void SetPosition(sf::Vector2f _position);
 	virtual void SetPosition(float _x, float _y);
 	virtual sf::Vector2f GetPosition();
+	
 
 	void Flip();
 	void Unflip();

@@ -23,6 +23,9 @@ PlayerBottom::PlayerBottom()
 	bottomMove.SetLoop(true);
 
 	m_animationSystem.Play("bottomMove");
+
+	//Set Origin
+	m_sprite.setOrigin(m_sprite.getGlobalBounds().width / 2, m_sprite.getGlobalBounds().height / 2);
 }
 
 void PlayerBottom::Update(sf::Time _frameTime)

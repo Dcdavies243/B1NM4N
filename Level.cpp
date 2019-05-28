@@ -45,7 +45,7 @@
 	, halfSize(400, 400)
 	, camera()
 {
-	LoadLevel(3);
+	LoadLevel(1);
 }
 
 void Level::Draw(sf::RenderTarget& _target)
@@ -342,6 +342,7 @@ void Level::LoadLevel(int _leveltoLoad)
 		{
 			Background* aBackground = new Background();
 			aBackground->SetPosition(x, y);
+			aBackground->SetSprite(m_currentLevel);
 			m_BackgroundList.push_back(aBackground);
 		}
 		else if (ch == '*')

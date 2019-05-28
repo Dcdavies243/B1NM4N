@@ -58,6 +58,9 @@ private:
 	bool m_treats;
 	bool m_falling;
 
+	bool m_fanSelect;
+	bool m_treatSelect;
+
 	float m_fallSpeed;
 	float m_treatSpeedX;
 	float m_treatSpeedY;

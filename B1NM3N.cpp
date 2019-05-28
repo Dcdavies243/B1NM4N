@@ -17,6 +17,8 @@ B1NM3N::B1NM3N()
 
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/EnemyPlacehold.png"));
 
+	//Set Origin
+	m_sprite.setOrigin(m_sprite.getGlobalBounds().width / 2, m_sprite.getGlobalBounds().height / 2);
 }
 
 void B1NM3N::SetPosition(sf::Vector2f _position)

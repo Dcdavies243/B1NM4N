@@ -28,6 +28,9 @@ FanTool::FanTool()
 	activeTool.SetLoop(true);
 
 	m_animationSystem.Play("activeTool");
+
+	//Set Origin
+	m_sprite.setOrigin(m_sprite.getGlobalBounds().width / 2, m_sprite.getGlobalBounds().height / 2);
 }
 
 void FanTool::Update(sf::Time _frameTime)

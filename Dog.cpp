@@ -3,6 +3,8 @@
 #include "Dog.h"
 #include "Player.h"
 #include "TreatsTool.h"
+#include "Wall.h"
+#include "WallRight.h"
 
 
 Dog::Dog()
@@ -11,8 +13,27 @@ Dog::Dog()
 	, speed(0.3f)
 	, m_direction ()
 	, m_magnitude()
+	, m_blocked(false)
 {
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/EnemyPlacehold.png"));
+	m_sprite.setTexture(AssetManager::GetTexture("graphics/PixelDog.fw.png"));
+
+	//Set Origin
+	m_sprite.setOrigin(m_sprite.getGlobalBounds().width / 2, m_sprite.getGlobalBounds().height / 2);
+}
+
+void Dog::Collide(GameObject& _collider)
+{
+	Wall* castWall = dynamic_cast<Wall*>(&_collider);
+	WallRight* castWallRight = dynamic_cast<WallRight*>(&_collider);
+
+	if (castWall != nullptr || castWallRight != nullptr)
+	{
+		//We hit a wall
+		//Return to previous position outside wall bounds
+
+		m_blocked = true;
+
+	}
 }
 
 void Dog::SetPosition(sf::Vector2f _position)
@@ -46,7 +67,7 @@ void Dog::MoveEnemy()
 
 	if (castPlayer->GetTreatActive())
 	{
-		if (m_position.x < (castPlayer->GetTreatLocation().x + 300) && m_position.x > castPlayer->GetTreatLocation().x || m_position.x > (castPlayer->GetTreatLocation().x - 300) && m_position.x < castPlayer->GetTreatLocation().x)
+		if (m_position.x < (castPlayer->GetTreatLocation().x + 300) && m_position.x > castPlayer->GetTreatLocation().x || m_position.x > (castPlayer->GetTreatLocation().x - 300) && m_position.x < castPlayer->GetTreatLocation().x && !m_blocked)
 		{
 			m_direction = (castPlayer->GetTreatLocation() - m_position);
 
@@ -55,7 +76,7 @@ void Dog::MoveEnemy()
 	}
 	else
 	{
-		if (m_position.x < (m_playerPos.x + 300) && m_position.x > m_playerPos.x || m_position.x > (m_playerPos.x - 300) && m_position.x < m_playerPos.x)
+		if (m_position.x < (m_playerPos.x + 300) && m_position.x > m_playerPos.x || m_position.x > (m_playerPos.x - 300) && m_position.x < m_playerPos.x && !m_blocked)
 		{
 			SetPosition(m_position.x + (m_normalised.x * speed), m_position.y);
 		}

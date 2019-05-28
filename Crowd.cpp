@@ -13,6 +13,9 @@ Crowd::Crowd()
 	, m_moving(false)
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/Crowd.png"));
+
+	//Set Origin
+	m_sprite.setOrigin(m_sprite.getGlobalBounds().width / 2, m_sprite.getGlobalBounds().height / 2);
 }
 
 void Crowd::SetPosition(sf::Vector2f _position)
@@ -38,24 +41,28 @@ void Crowd::Update(sf::Time _frameTime)
 
 	MoveEnemy();
 
+	if (m_moving)
+	{
+		SetPosition(m_position.x + (m_normalised.x * speed), m_position.y);
 
+		m_direction = (m_targetPos - m_position);
+
+		m_magnitude = (sqrt(pow(m_direction.x, 2) + pow(m_direction.y, 2)));
+
+		m_normalised = sf::Vector2f(m_direction.x / m_magnitude, m_direction.y / m_magnitude);
+	}
 }
 
 void Crowd::MoveEnemy()
 {
 	m_playerPos = castPlayer->GetPosition();
+	m_targetPos = sf::Vector2f(m_position.x - 1500, m_position.y);
 
 
-	if (m_position.x < (m_playerPos.x + 300) && m_position.x > m_playerPos.x || m_position.x > (m_playerPos.x - 300) && m_position.x < m_playerPos.x)
+	if (m_position.x < (m_playerPos.x + 1000) && m_position.x > m_playerPos.x)
 	{
-		SetPosition(m_position.x + (m_normalised.x * speed), m_position.y);
+		m_moving = true;
 	}
-
-	m_direction = (m_playerPos - m_position);
-	
-	m_magnitude = (sqrt(pow(m_direction.x, 2) + pow(m_direction.y, 2)));
-
-	m_normalised = sf::Vector2f(m_direction.x / m_magnitude, m_direction.y / m_magnitude);
 
 }
 

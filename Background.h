@@ -10,5 +10,5 @@ public:
 
 	//Overridding methods
 
-
+	void SetSprite(int _currentLevel);
 };

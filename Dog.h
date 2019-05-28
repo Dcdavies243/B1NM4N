@@ -17,6 +17,7 @@ public:
 
 	//Overriding Methods
 	void Update(sf::Time _frameTime);
+	virtual void Collide(GameObject& _collider);
 	virtual void SetPosition(float _x, float _y);
 	virtual void SetPosition(sf::Vector2f _position);
 
@@ -37,6 +38,8 @@ private:
 	sf::Vector2f m_direction;
 	sf::Vector2f m_normalised;
 	
+	bool m_blocked;
+
 	float m_magnitude;
 	float speed;
 	float factor = 0.f;
