@@ -13,6 +13,7 @@
 #include "TreatsPickup.h"
 #include "B1NM3N.h"
 #include "Crowd.h"
+#include "Gladiator.h"
 #include "GrabberBox.h"
 #include "FanTool.h"
 #include "FanTarget.h"
@@ -118,12 +119,12 @@ void Level::Update(sf::Time _frameTime)
 
 
 	// Draw game world to the window
-	if (m_player->GetPosition().y < 1200)
+	if (m_player->GetPosition().y < 1600)
 	{
 		camera.setCenter(m_player->GetPosition().x, m_player->GetPosition().y - 200);
 	}
 
-	if (m_player->GetPosition().y == 1200)
+	if (m_player->GetPosition().y == 1600)
 	{
 		camera.setCenter(m_player->GetPosition().x, 1150);
 	}
@@ -213,16 +214,15 @@ void Level::LoadLevel(int _leveltoLoad)
 			m_WorldList.push_back(aPlayer);
 
 			//Set tools available based on level
-			if (m_currentLevel > 1 && m_currentLevel < 3)
+			if (m_currentLevel = 2)
 			{
 				aPlayer->CollectFan();
 			}
-			else if (m_currentLevel > 3)
+			if (m_currentLevel = 3)
 			{
 				aPlayer->CollectFan();
 				aPlayer->CollectTreats();
 			}
-			
 		}
 		else if (ch == 'D')
 		{
@@ -251,6 +251,15 @@ void Level::LoadLevel(int _leveltoLoad)
 			m_updateList.push_back(aCrowd);
 			m_WorldList.push_back(aCrowd);
 			m_collisionList.push_back(std::make_pair(aPlayer, aCrowd));
+		}
+		else if (ch == 'V')
+		{
+			Gladiator* aGladiator = new Gladiator();
+			aGladiator->SetPosition(x, y);
+			aGladiator->SetTarget(aPlayer);
+			m_updateList.push_back(aGladiator);
+			m_WorldList.push_back(aGladiator);
+			m_collisionList.push_back(std::make_pair(aPlayer, aGladiator));
 		}
 		///////////////////////////////////////////////////////////
 		////                   Level Sprites                  /////

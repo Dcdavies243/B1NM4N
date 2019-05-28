@@ -131,6 +131,9 @@
     <ClCompile Include="Crowd.cpp">
       <Filter>GameCode</Filter>
     </ClCompile>
+    <ClCompile Include="Gladiator.cpp">
+      <Filter>GameCode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Animation.h">
@@ -238,6 +241,9 @@
     <ClInclude Include="Crowd.h">
       <Filter>GameCode</Filter>
     </ClInclude>
+    <ClInclude Include="Gladiator.h">
+      <Filter>GameCode</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="levels\Level1.txt">
@@ -247,6 +253,9 @@
       <Filter>Levels</Filter>
     </Text>
     <Text Include="levels\Level3.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="levels\Level4.txt">
       <Filter>Levels</Filter>
     </Text>
   </ItemGroup>

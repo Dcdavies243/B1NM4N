@@ -12,10 +12,10 @@ Crowd::Crowd()
 	, m_magnitude()
 	, m_moving(false)
 {
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/Crowd.png"));
+	m_sprite.setTexture(AssetManager::GetTexture("graphics/CrowdLvl3.png"));
 
 	//Set Origin
-	m_sprite.setOrigin(m_sprite.getGlobalBounds().width / 2, m_sprite.getGlobalBounds().height / 2);
+	m_sprite.setOrigin(m_sprite.getGlobalBounds().width / 2, m_sprite.getGlobalBounds().height / 3.2);
 }
 
 void Crowd::SetPosition(sf::Vector2f _position)

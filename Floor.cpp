@@ -12,7 +12,7 @@ Floor::Floor()
 
 void Floor::SetSprite(int _currentLevel)
 {
-	if (_currentLevel == 1)
+	if (_currentLevel == 1 || _currentLevel == 4)
 	{
 		m_sprite.setTexture(AssetManager::GetTexture("graphics/Level1Floor.png"));
 	}

@@ -12,6 +12,7 @@
 #include "TreatsTool.h"
 #include "B1NM3N.h"
 #include "Dog.h"
+#include "Crowd.h"
 #include "GrabberBox.h"
 #include "FanTarget.h"
 #include "LevelChanger.h"
@@ -352,6 +353,8 @@ void Player::Collide(GameObject& _collider)
 
 	Dog* castDog = dynamic_cast<Dog*>(&_collider);
 
+	Crowd* castCrowd = dynamic_cast<Crowd*>(&_collider);
+
 	if (castB1NM3N != nullptr)
 	{
 		//We hit an enemy B1NM4N
@@ -368,7 +371,14 @@ void Player::Collide(GameObject& _collider)
 		Kill();
 
 	}
-	
+	else if (castCrowd != nullptr)
+	{
+		//We hit an enemy B1NM4N
+		//Kill player, reset level
+
+		Kill();
+
+	}
 }
 
 bool Player::HasFan()
