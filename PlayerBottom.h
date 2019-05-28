@@ -13,6 +13,8 @@ public:
 
 	//Overriding Methods
 	void Update(sf::Time _frameTime);
+	void RunAnimation();
+	void PauseAnimation();
 
 
 private:

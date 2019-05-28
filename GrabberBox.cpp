@@ -21,4 +21,8 @@ void GrabberBox::SetSprite(int _currentLevel)
 	{
 		m_sprite.setTexture(AssetManager::GetTexture("graphics/Level2WallLeft.png"));
 	}
+	else if (_currentLevel == 3)
+	{
+		m_sprite.setTexture(AssetManager::GetTexture("graphics/Level3Grabber.png"));
+	}
 }

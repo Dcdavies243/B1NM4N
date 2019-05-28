@@ -64,16 +64,18 @@ void Player::Update(sf::Time _frameTime)
 	//Run Input Function
 	Input();
 
-	//Grtavity effect
+	//Gravity effect
 	m_fallSpeed += (125.0f * (3.0f * _frameTime.asSeconds()));
-	
+
 
 	//Kill Z
-	if (m_position.y >= 2000)
+	if (m_position.y >= 1500)
 	{
 		m_fallSpeed = 0.0f;
 		Kill();
 	}
+
+
 
 	topPositionPrev = m_top->GetPosition();
 
@@ -102,8 +104,7 @@ void Player::Input()
 		}
 
 	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
 		if (m_offset.y > 30)
 		{
@@ -111,8 +112,7 @@ void Player::Input()
 		}
 
 	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
 		fanOffset = sf::Vector2f(-35, fanOffset.y);
 
@@ -123,9 +123,7 @@ void Player::Input()
 		treatsOffset = sf::Vector2f(0, 0);
 
 	}
-
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
 		fanOffset = sf::Vector2f(40, fanOffset.y);
 
@@ -136,6 +134,7 @@ void Player::Input()
 		treatsOffset = sf::Vector2f(0, 0);
 
 	}
+
 
 	if (m_grabbing && sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
@@ -349,6 +348,7 @@ void Player::Collide(GameObject& _collider)
 		castDog->Kill();
 
 	}
+	
 }
 
 bool Player::HasFan()

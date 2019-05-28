@@ -29,3 +29,13 @@ void PlayerBottom::Update(sf::Time _frameTime)
 {
 	m_animationSystem.Update(_frameTime);
 }
+
+void PlayerBottom::RunAnimation()
+{
+	m_animationSystem.Play();
+}
+
+void PlayerBottom::PauseAnimation()
+{
+	m_animationSystem.Pause();
+}

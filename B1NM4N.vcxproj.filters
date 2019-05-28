@@ -128,6 +128,9 @@
     <ClCompile Include="UI.cpp">
       <Filter>GameCode</Filter>
     </ClCompile>
+    <ClCompile Include="Crowd.cpp">
+      <Filter>GameCode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Animation.h">
@@ -230,6 +233,9 @@
       <Filter>ArtClasses</Filter>
     </ClInclude>
     <ClInclude Include="UI.h">
+      <Filter>GameCode</Filter>
+    </ClInclude>
+    <ClInclude Include="Crowd.h">
       <Filter>GameCode</Filter>
     </ClInclude>
   </ItemGroup>

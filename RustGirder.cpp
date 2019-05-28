@@ -20,4 +20,8 @@ void RustGirder::SetSprite(int _currentLevel)
 	{
 		m_sprite.setTexture(AssetManager::GetTexture("graphics/TreeInternal.png"));
 	}
+	else if (_currentLevel == 3)
+	{
+		m_sprite.setTexture(AssetManager::GetTexture("graphics/ColumnBack.png"));
+	}
 }

@@ -12,6 +12,7 @@
 #include "FanPickup.h"
 #include "TreatsPickup.h"
 #include "B1NM3N.h"
+#include "Crowd.h"
 #include "GrabberBox.h"
 #include "FanTool.h"
 #include "FanTarget.h"
@@ -44,7 +45,7 @@
 	, halfSize(400, 400)
 	, camera()
 {
-	LoadLevel(1);
+	LoadLevel(3);
 }
 
 void Level::Draw(sf::RenderTarget& _target)
@@ -114,6 +115,7 @@ void Level::Update(sf::Time _frameTime)
 			}
 		}
 	}
+
 
 	// Draw game world to the window
 	if (m_player->GetPosition().y < 1200)
@@ -209,6 +211,18 @@ void Level::LoadLevel(int _leveltoLoad)
 			aPlayer->SetLevel(this);
 			m_updateList.push_back(aPlayer);
 			m_WorldList.push_back(aPlayer);
+
+			//Set tools available based on level
+			if (m_currentLevel > 1 && m_currentLevel < 3)
+			{
+				aPlayer->CollectFan();
+			}
+			else if (m_currentLevel > 3)
+			{
+				aPlayer->CollectFan();
+				aPlayer->CollectTreats();
+			}
+			
 		}
 		else if (ch == 'D')
 		{
@@ -228,6 +242,15 @@ void Level::LoadLevel(int _leveltoLoad)
 			m_updateList.push_back(aB1NM3N);
 			m_WorldList.push_back(aB1NM3N);
 			m_collisionList.push_back(std::make_pair(aPlayer, aB1NM3N));
+		}
+		else if (ch == 'C')
+		{
+			Crowd* aCrowd = new Crowd();
+			aCrowd->SetPosition(x, y);
+			aCrowd->SetTarget(aPlayer);
+			m_updateList.push_back(aCrowd);
+			m_WorldList.push_back(aCrowd);
+			m_collisionList.push_back(std::make_pair(aPlayer, aCrowd));
 		}
 		///////////////////////////////////////////////////////////
 		////                   Level Sprites                  /////
