@@ -36,7 +36,7 @@ Player::Player()
 	, m_treatSpeedY(0.0f)
 	, fanActive(false)
 	, m_offset(0, 30.0f)
-	, fanOffset(45, 15)
+	, fanOffset(0, 0)
 	, treatsOffset(0, 0)
 {
 
@@ -120,28 +120,30 @@ void Player::Input()
 
 		flipped = true;
 
-		treatsOffset = sf::Vector2f(0, 0);
+		treatsOffset = sf::Vector2f(-250, -25);
 
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
-		fanOffset = sf::Vector2f(40, fanOffset.y);
+		fanOffset = sf::Vector2f(400, fanOffset.y);
 
 		m_velocity.x = SPEED;
 
 		flipped = false;
 
-		treatsOffset = sf::Vector2f(0, 0);
+		treatsOffset = sf::Vector2f(250, -25);
 
 	}
 
 	if (m_fan && sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
 	{
 		m_fanSelect = true;
+		m_treatSelect = false;
 	}
 	else if (m_treats && sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
 	{
 		m_treatSelect = true;
+		m_fanSelect = false;
 	}
 
 
@@ -169,10 +171,6 @@ void Player::Input()
 
 	if (m_treats && !treatActive && m_offset.y == 30.0f && m_treatSelect && sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
 	{
-		if (treatActive)
-		{
-			treatActive = false;
-		}
 
 		treatActive = true;
 		treatTarget = m_bottom->GetPosition() + treatsOffset;
@@ -207,14 +205,11 @@ void Player::SetPosition(sf::Vector2f _position)
 	m_top->SetPosition(_position - m_offset);
 	m_bottom->SetPosition(_position);
 
+	if (!flipped)
+		m_fantool->SetPosition(_position + sf::Vector2f(16, -15));
 	if (flipped)
-	{
-		m_fantool->SetPosition(_position + fanOffset);
-	}
-	else if (!flipped)
-	{
-		m_fantool->SetPosition(_position.x - fanOffset.x, _position.y + fanOffset.y);
-	}
+		m_fantool->SetPosition(_position + sf::Vector2f(-16, -15));
+
 
 	if (treatActive)
 	{

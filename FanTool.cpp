@@ -30,7 +30,7 @@ FanTool::FanTool()
 	m_animationSystem.Play("activeTool");
 
 	//Set Origin
-	m_sprite.setOrigin(m_sprite.getGlobalBounds().width / 2, m_sprite.getGlobalBounds().height / 2);
+	m_sprite.setOrigin(0, m_sprite.getGlobalBounds().height / 2);
 }
 
 void FanTool::Update(sf::Time _frameTime)

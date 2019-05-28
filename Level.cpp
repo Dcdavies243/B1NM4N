@@ -45,7 +45,7 @@
 	, halfSize(400, 400)
 	, camera()
 {
-	LoadLevel(1);
+	LoadLevel(3);
 }
 
 void Level::Draw(sf::RenderTarget& _target)
