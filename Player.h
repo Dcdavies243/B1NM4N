@@ -42,6 +42,8 @@ public:
 	void CollectTreats();
 
 	//Tool Methods
+	bool ToolSelectFan();
+	bool ToolSelectTreats();
 	void UseFan();
 	void UseTreat();
 

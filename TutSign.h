@@ -5,7 +5,10 @@
 
 class TutSign : public SpriteObject
 {
+
 public:
 	TutSign();
+
+private:
 
 };

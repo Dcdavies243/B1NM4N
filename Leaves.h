@@ -5,7 +5,11 @@
 
 class Leaves : public SpriteObject
 {
+
 public:
 	Leaves();
+
+private:
+
 
 };

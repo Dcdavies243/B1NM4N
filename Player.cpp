@@ -20,7 +20,7 @@
 
 
 //Constants
-#define SPEED 200.0f
+#define SPEED 150.0f
 
 
 Player::Player()
@@ -399,6 +399,16 @@ bool Player::HasTreats()
 void Player::CollectTreats()
 {
 	m_treats = true;
+}
+
+bool Player::ToolSelectFan()
+{
+	return m_fanSelect;
+}
+
+bool Player::ToolSelectTreats()
+{
+	return m_treatSelect;
 }
 
 void Player::UseFan()

@@ -3,6 +3,9 @@
 //Project Includes
 #include "Framework/GameObject.h"
 
+//Foward decleration
+class Player;
+
 class Level
 {
 
@@ -27,9 +30,13 @@ private:
 	sf::Vector2f halfSize;
 
 	int m_currentLevel;
-	GameObject* m_player;
+	Player* m_player;
 	GameObject* m_treat;
 	GameObject* m_background;
+
+	sf::Music m_musicLvl1;
+	sf::Music m_musicLvl2;
+	sf::Music m_musicLvl3;
 
 	std::vector<GameObject*> m_updateList;
 	std::vector<GameObject*> m_WorldList;

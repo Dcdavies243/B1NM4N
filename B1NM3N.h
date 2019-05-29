@@ -25,6 +25,7 @@ public:
 
 private:
 
+	//Private variables (KEEP PRIVATE, NO PUBLIC VARIABLES)
 	bool turned;
 
 	sf::Vector2f m_position;

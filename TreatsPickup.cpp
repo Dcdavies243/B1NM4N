@@ -5,7 +5,7 @@
 TreatsPickup::TreatsPickup()
 	: Pickup()
 {
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/ItemPlacehold.png"));
+	m_sprite.setTexture(AssetManager::GetTexture("graphics/TreatsPlacehold.png"));
 }
 
 

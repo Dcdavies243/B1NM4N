@@ -11,8 +11,8 @@ FanPickup::FanPickup()
 	// Set up the animation
 	m_animationSystem.SetSprite(m_sprite);
 
-	// Create indvidual animations
 
+	// Create indvidual animations
 	Animation& idleItem = m_animationSystem.CreateAnimation("idleItem");
 
 	idleItem.AddFrame(AssetManager::GetTexture("graphics/FanItemPickup/1.png"));
@@ -30,11 +30,13 @@ FanPickup::FanPickup()
 
 void FanPickup::Update(sf::Time _frameTime)
 {
+	//Update the animation every frame
 	m_animationSystem.Update(_frameTime);
 }
 
 
 void FanPickup::OnPickup(Player& _player)
 {
+	//Run the Players CollectFan function
 	_player.CollectFan();
 }

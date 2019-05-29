@@ -45,8 +45,13 @@
 	, centre(960, 540)
 	, halfSize(400, 400)
 	, camera()
+	, m_musicLvl1()
+	, m_musicLvl2()
+	, m_musicLvl3()
+
 {
-	LoadLevel(3);
+	LoadLevel(2);
+
 }
 
 void Level::Draw(sf::RenderTarget& _target)
@@ -58,13 +63,6 @@ void Level::Draw(sf::RenderTarget& _target)
 
 	// Draw UI to the window
 	//_target.setView(_target.getDefaultView());
-
-
-	for (int i = 0; i < m_UIList.size(); ++i)
-	{
-		if (m_UIList[i]->IsActive())
-			m_UIList[i]->Draw(_target);
-	}
 
 	for (int i = 0; i < m_BackgroundList.size(); ++i)
 	{
@@ -84,6 +82,12 @@ void Level::Draw(sf::RenderTarget& _target)
 			m_ForegroundList[i]->Draw(_target);
 	}
 
+	for (int i = 0; i < m_UIList.size(); ++i)
+	{
+		if (m_UIList[i]->IsActive())
+			m_UIList[i]->Draw(_target);
+	}
+
 }
 
 void Level::Update(sf::Time _frameTime)
@@ -100,6 +104,7 @@ void Level::Update(sf::Time _frameTime)
 	{
 		if (m_UIList[i]->IsActive())
 			m_UIList[i]->Update(_frameTime);
+	
 	}
 
 	for (int i = 0; i < m_collisionList.size(); ++i)
@@ -153,8 +158,38 @@ void Level::LoadLevel(int _leveltoLoad)
 	//Set the current Level
 	m_currentLevel = _leveltoLoad;
 
-	//Set up the new level
+	//Load in Music
+	m_musicLvl1.openFromFile("audio/CreakingMetalSounscape.ogg");
+	m_musicLvl1.setLoop(true);
 
+	m_musicLvl2.openFromFile("audio/CreakingMetalSounscape.ogg");
+	m_musicLvl2.setLoop(true);
+
+	m_musicLvl3.openFromFile("audio/CreakingMetalSounscape.ogg");
+	m_musicLvl3.setLoop(true);
+
+	//Play music based on level
+	//Level 1
+	if (m_currentLevel == 1)
+	{
+		m_musicLvl1.play();
+	}
+	//Level 2
+	else if (m_currentLevel == 2)
+	{
+		m_musicLvl1.stop();
+		m_musicLvl2.play();
+	}
+	//Level 3
+	else if (m_currentLevel == 3)
+	{
+		m_musicLvl2.stop();
+		m_musicLvl3.play();
+	}
+
+	
+
+	//Set up the new level
 	//Open our file for reading
 	std::ifstream inFile;
 	std::string fileName = "Levels/Level" + std::to_string(m_currentLevel) + ".txt";
@@ -214,11 +249,11 @@ void Level::LoadLevel(int _leveltoLoad)
 			m_WorldList.push_back(aPlayer);
 
 			//Set tools available based on level
-			if (m_currentLevel = 2)
+			if (m_currentLevel == 2)
 			{
 				aPlayer->CollectFan();
 			}
-			if (m_currentLevel = 3)
+			if (m_currentLevel == 3)
 			{
 				aPlayer->CollectFan();
 				aPlayer->CollectTreats();
@@ -414,6 +449,7 @@ void Level::LoadLevel(int _leveltoLoad)
 	inFile.close();
 
 	UI* aUI = new UI();
+	aUI->SetPlayer(aPlayer);
 	m_updateList.push_back(aUI);
 	m_UIList.push_back(aUI);
 

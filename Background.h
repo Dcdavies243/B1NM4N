@@ -8,7 +8,10 @@ class Background : public SpriteObject
 public:
 	Background();
 
-	//Overridding methods
 
+	//Overridding methods
 	void SetSprite(int _currentLevel);
+
+private:
+
 };

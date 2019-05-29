@@ -11,11 +11,11 @@ Dog::Dog()
 	: MovingObject() //Initialise base class
 	, m_position()
 	, speed(0.3f)
-	, m_direction ()
+	, m_direction()
 	, m_magnitude()
 	, m_blocked(false)
 {
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/PixelDog.fw.png"));
+	m_sprite.setTexture(AssetManager::GetTexture("graphics/PixelDog.png"));
 
 	//Set Origin
 	m_sprite.setOrigin(m_sprite.getGlobalBounds().width / 2, m_sprite.getGlobalBounds().height / 2);
