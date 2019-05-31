@@ -13,8 +13,10 @@ private:
 
 
 	// Overriding Methods
-	virtual void Update(sf::Time _frameTime);
 	virtual void OnPickup(Player& _player);
+
+	//Class Methods
+	void SetSprite(int _currentLevel);
 
 
 	AnimationSystem m_animationSystem;

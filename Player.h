@@ -76,6 +76,8 @@ private:
 
 	sf::Vector2f treatTarget;
 
+	//Sounds
+	sf::Sound m_detectSound;
 
 	//Position and Offset for Body
 	sf::Vector2f m_position;

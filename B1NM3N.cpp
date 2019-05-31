@@ -15,10 +15,13 @@ B1NM3N::B1NM3N()
 	, pointB()
 {
 	//Set Sprite
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/EnemyPlacehold.png"));
+	m_sprite.setTexture(AssetManager::GetTexture("graphics/RobotEnemy.png"));
 
 	//Set Origin
-	m_sprite.setOrigin(m_sprite.getGlobalBounds().width / 2, m_sprite.getGlobalBounds().height / 2);
+	m_sprite.setOrigin(m_sprite.getGlobalBounds().width / 2, m_sprite.getGlobalBounds().height/ 5);
+
+	//Set sound
+	m_detectSound.setBuffer(AssetManager::GetSoundBuffer("audio/RobotSound.ogg"));
 }
 
 void B1NM3N::SetPosition(sf::Vector2f _position)

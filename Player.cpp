@@ -49,9 +49,8 @@ Player::Player()
 	m_fantool = new FanTool();
 	m_treatstool = new TreatsTool();
 
-	//TODO: Set up the animation
-
-	//TODO: Create individual animations
+	//Set up sounds
+	m_detectSound.setBuffer(AssetManager::GetSoundBuffer("audio/RobotSound.ogg"));
 
 }
 
@@ -74,6 +73,7 @@ void Player::Update(sf::Time _frameTime)
 	{
 		m_fallSpeed = 0.0f;
 		Kill();
+		return;
 	}
 
 
@@ -93,45 +93,61 @@ void Player::Update(sf::Time _frameTime)
 
 void Player::Input()
 {
-
+	//Get the position of the top part of the player
+	//(Runs in Update, so happens every frame)
 	sf::Vector2f m_topPosition = m_top->GetPosition();
 
-
+	//If W key is pressed
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
+		//and the top is not above a certain height
 		if (m_offset.y < 150)
 		{
+			// Move the top part up
 			m_offset.y = m_offset.y - (-SPEED / 600);
 		}
 
 	}
+	//If S key is pressed
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
+		//and the top is not below a certain height
 		if (m_offset.y > 30)
 		{
+			//Move the top part down
 			m_offset.y = m_offset.y - (SPEED / 600);
 		}
 
 	}
+	//If A key is pressed
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
+		//Set fan position so in front of player
 		fanOffset = sf::Vector2f(-35, fanOffset.y);
 
+		//Move player in correct direction
 		m_velocity.x = -SPEED;
 
+		//Flip the player sprite
 		flipped = true;
-
+		
+		//Set target position for treat tool
 		treatsOffset = sf::Vector2f(-250, -25);
 
 	}
+	//If S key is pressed
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
+		//Set fan position so in front of player
 		fanOffset = sf::Vector2f(400, fanOffset.y);
 
+		//Move player in correct direction
 		m_velocity.x = SPEED;
 
+		//Flip the player sprite
 		flipped = false;
 
+		//Set target position for treat tool
 		treatsOffset = sf::Vector2f(250, -25);
 
 	}
@@ -153,6 +169,8 @@ void Player::Input()
 	{
 		m_grabbing = false;
 		m_offset.y = 30.0f;
+
+		m_detectSound.play();
 
 		m_bottom->SetPosition(m_grabposition + sf::Vector2f(0, -50));
 	}
@@ -219,11 +237,14 @@ void Player::SetPosition(sf::Vector2f _position)
 
 }
 
+
 void Player::Draw(sf::RenderTarget& _target)
 {
+	//Draws top and bottom classes
 	m_top->Draw(_target);
 	m_bottom->Draw(_target);
 
+	//Flips sprites based on current moving direction
 	if (flipped)
 	{
 		m_top->Flip();
@@ -237,11 +258,13 @@ void Player::Draw(sf::RenderTarget& _target)
 		m_fantool->Unflip();
 	}
 
+	//Draws fan tool
 	if (fanActive)
 	{
 		m_fantool->Draw(_target);
 	}
 
+	//Draws treat tool
 	if (treatActive)
 	{
 		m_treatstool->Draw(_target);
@@ -250,10 +273,13 @@ void Player::Draw(sf::RenderTarget& _target)
 
 sf::FloatRect Player::GetBounds()
 {
+	//Creates a variable for collisions with the top part
 	topCollider = m_top->GetBounds();
 
+	//Sets bounds for the treat tool
 	treatCollider = m_treatstool->GetBounds();
 
+	//Creates combined bounds from the top and bottom parts
 	sf::FloatRect combinedBounds;
 	combinedBounds.left = std::min(m_top->GetBounds().left, m_bottom->GetBounds().left);
 	combinedBounds.top = std::min(m_top->GetBounds().top, m_bottom->GetBounds().top);

@@ -8,18 +8,27 @@ LevelChanger::LevelChanger()
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/LevelTransitionItem1.png"));
 
-	// TODO: Set up the animation
-
-
 }
 
-void LevelChanger::Update(sf::Time _frameTime)
+void LevelChanger::SetSprite(int _currentLevel)
 {
-	m_animationSystem.Update(_frameTime);
+	//Set sprite dependent on level
+	if (_currentLevel == 1)
+	{
+		m_sprite.setTexture(AssetManager::GetTexture("graphics/LevelTransitionItem1.png"));
+	}
+	if (_currentLevel == 2)
+	{
+		m_sprite.setTexture(AssetManager::GetTexture("graphics/LevelTransitionItem2.png"));
+	}
+	if (_currentLevel == 3)
+	{
+		m_sprite.setTexture(AssetManager::GetTexture("graphics/LevelTransitionItem3.png"));
+	}
 }
-
 
 void LevelChanger::OnPickup(Player& _player)
 {
+	//Run the players AdvanceLevel function when player collides
 	_player.AdvanceLevel();
 }

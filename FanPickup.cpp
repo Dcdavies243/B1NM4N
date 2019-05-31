@@ -15,6 +15,7 @@ FanPickup::FanPickup()
 	// Create indvidual animations
 	Animation& idleItem = m_animationSystem.CreateAnimation("idleItem");
 
+	//Set up animation frames
 	idleItem.AddFrame(AssetManager::GetTexture("graphics/FanItemPickup/1.png"));
 	idleItem.AddFrame(AssetManager::GetTexture("graphics/FanItemPickup/2.png"));
 	idleItem.AddFrame(AssetManager::GetTexture("graphics/FanItemPickup/3.png"));
@@ -22,9 +23,11 @@ FanPickup::FanPickup()
 	idleItem.AddFrame(AssetManager::GetTexture("graphics/FanItemPickup/5.png"));
 	idleItem.AddFrame(AssetManager::GetTexture("graphics/FanItemPickup/6.png"));
 
+	//Set playback speed and loop of animation
 	idleItem.SetPlayBackSpeed(10);
 	idleItem.SetLoop(true);
 
+	//Play animation
 	m_animationSystem.Play("idleItem");
 }
 

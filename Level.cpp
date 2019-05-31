@@ -49,8 +49,9 @@
 	, m_musicLvl2()
 	, m_musicLvl3()
 
+	//Constructor
 {
-	LoadLevel(2);
+	LoadLevel(1);
 
 }
 
@@ -61,27 +62,30 @@ void Level::Draw(sf::RenderTarget& _target)
 	//Create and update camera
 	_target.setView(camera);
 
-	// Draw UI to the window
-	//_target.setView(_target.getDefaultView());
-
+	//Run through lists of classes and draw in order
+	//Background List
+	//(Is for background and decorative objects BEHIND the player)
 	for (int i = 0; i < m_BackgroundList.size(); ++i)
 	{
 		if (m_BackgroundList[i]->IsActive())
 			m_BackgroundList[i]->Draw(_target);
 	}
-
+	//World List
+	//(Is for objects on the same layer as the player)
 	for (int i = 0; i < m_WorldList.size(); ++i)
 	{
 		if (m_WorldList[i]->IsActive())
 			m_WorldList[i]->Draw(_target);
 	}
-
+	//Foreground List
+	//(Is for Foreground and decorative objects INFRONT of the player)
 	for (int i = 0; i < m_ForegroundList.size(); ++i)
 	{
 		if (m_ForegroundList[i]->IsActive())
 			m_ForegroundList[i]->Draw(_target);
 	}
-
+	//UI List
+	//(Is for UI objects, ensures they are drawn on top of everything and never obstructed)
 	for (int i = 0; i < m_UIList.size(); ++i)
 	{
 		if (m_UIList[i]->IsActive())
@@ -94,19 +98,21 @@ void Level::Update(sf::Time _frameTime)
 {
 
 	// Update all game objects
+	// Updates World List
 	for (int i = 0; i < m_WorldList.size(); ++i)
 	{
 		if (m_WorldList[i]->IsActive())
 			m_WorldList[i]->Update(_frameTime);
 	}
 
+	//Updates UI List
 	for (int i = 0; i < m_UIList.size(); ++i)
 	{
 		if (m_UIList[i]->IsActive())
 			m_UIList[i]->Update(_frameTime);
 	
 	}
-
+	// Updates Collision List
 	for (int i = 0; i < m_collisionList.size(); ++i)
 	{
 
@@ -129,10 +135,12 @@ void Level::Update(sf::Time _frameTime)
 		camera.setCenter(m_player->GetPosition().x, m_player->GetPosition().y - 200);
 	}
 
+	// Stop camera if player hits Kill Z
 	if (m_player->GetPosition().y == 1600)
 	{
 		camera.setCenter(m_player->GetPosition().x, 1150);
 	}
+	//Set Size of camera
 	camera.setSize(sf::Vector2f(1920, 1080));
 }
 
@@ -162,10 +170,10 @@ void Level::LoadLevel(int _leveltoLoad)
 	m_musicLvl1.openFromFile("audio/CreakingMetalSounscape.ogg");
 	m_musicLvl1.setLoop(true);
 
-	m_musicLvl2.openFromFile("audio/CreakingMetalSounscape.ogg");
+	m_musicLvl2.openFromFile("audio/Level2Music.ogg");
 	m_musicLvl2.setLoop(true);
 
-	m_musicLvl3.openFromFile("audio/CreakingMetalSounscape.ogg");
+	m_musicLvl3.openFromFile("audio/Level3Music.ogg");
 	m_musicLvl3.setLoop(true);
 
 	//Play music based on level
@@ -241,6 +249,8 @@ void Level::LoadLevel(int _leveltoLoad)
 		////              Player and Enemy Sprites            /////
 		////                                                  /////
 		///////////////////////////////////////////////////////////
+
+		// Load player into Level at position on Text File
 		else if (ch == 'P')
 		{
 			aPlayer->SetPosition(x, y);
@@ -249,16 +259,21 @@ void Level::LoadLevel(int _leveltoLoad)
 			m_WorldList.push_back(aPlayer);
 
 			//Set tools available based on level
+			//If on Level 2
 			if (m_currentLevel == 2)
 			{
+				//Player already has fan tool
 				aPlayer->CollectFan();
 			}
+			//If on Level 3
 			if (m_currentLevel == 3)
 			{
+				//Player already has fan and treats tool
 				aPlayer->CollectFan();
 				aPlayer->CollectTreats();
 			}
 		}
+		// Load Dog into Level at position on Text File
 		else if (ch == 'D')
 		{
 			Dog* aDog = new Dog();
@@ -269,6 +284,7 @@ void Level::LoadLevel(int _leveltoLoad)
 			m_collisionList.push_back(std::make_pair(aPlayer, aDog));
 			m_collisionList.push_back(std::make_pair(aTreat, aDog));
 		}
+		// Load B1NM3N into Level at position on Text File
 		else if (ch == 'B')
 		{
 			B1NM3N* aB1NM3N = new B1NM3N();
@@ -278,6 +294,7 @@ void Level::LoadLevel(int _leveltoLoad)
 			m_WorldList.push_back(aB1NM3N);
 			m_collisionList.push_back(std::make_pair(aPlayer, aB1NM3N));
 		}
+		// Load Crowd into Level at position on Text File
 		else if (ch == 'C')
 		{
 			Crowd* aCrowd = new Crowd();
@@ -287,6 +304,7 @@ void Level::LoadLevel(int _leveltoLoad)
 			m_WorldList.push_back(aCrowd);
 			m_collisionList.push_back(std::make_pair(aPlayer, aCrowd));
 		}
+		// Load Gladiator into Level at position on Text File
 		else if (ch == 'V')
 		{
 			Gladiator* aGladiator = new Gladiator();
@@ -301,6 +319,7 @@ void Level::LoadLevel(int _leveltoLoad)
 		////    May change, at moment seperate for levels     /////
 		///////////////////////////////////////////////////////////
 
+		// Load Floor into Level at position on Text File
 		else if (ch == 'F')
 		{
 			Floor* aFloor = new Floor();
@@ -310,6 +329,7 @@ void Level::LoadLevel(int _leveltoLoad)
 			m_WorldList.push_back(aFloor);
 			m_collisionList.push_back(std::make_pair(aPlayer, aFloor));
 		}
+		// Load StoneFloor into Level at position on Text File
 		else if (ch == 'S')
 		{
 			StoneFloor* aStoneFloor = new StoneFloor();
@@ -318,6 +338,7 @@ void Level::LoadLevel(int _leveltoLoad)
 			m_WorldList.push_back(aStoneFloor);
 			m_collisionList.push_back(std::make_pair(aPlayer, aStoneFloor));
 		}
+		// Load Wall into Level at position on Text File
 		else if (ch == 'w')
 		{
 			Wall* aWall = new Wall();
@@ -327,6 +348,7 @@ void Level::LoadLevel(int _leveltoLoad)
 			m_WorldList.push_back(aWall);
 			m_collisionList.push_back(std::make_pair(aPlayer, aWall));
 		}
+		// Load WallRight into Level at position on Text File
 		else if (ch == 'W')
 		{
 			WallRight* aWallRight = new WallRight();
@@ -336,6 +358,7 @@ void Level::LoadLevel(int _leveltoLoad)
 			m_WorldList.push_back(aWallRight);
 			m_collisionList.push_back(std::make_pair(aPlayer, aWallRight));
 		}
+		// Load GrabberBox into Level at position on Text File
 		else if (ch == 'G')
 		{
 			GrabberBox* aGrabberBox = new GrabberBox();
@@ -345,6 +368,7 @@ void Level::LoadLevel(int _leveltoLoad)
 			m_WorldList.push_back(aGrabberBox);
 			m_collisionList.push_back(std::make_pair(aPlayer, aGrabberBox));
 		}
+		// Load FanPickup into Level at position on Text File
 		else if (ch == 'I')
 		{
 			FanPickup* aFanPickup = new FanPickup();
@@ -353,6 +377,7 @@ void Level::LoadLevel(int _leveltoLoad)
 			m_WorldList.push_back(aFanPickup);
 			m_collisionList.push_back(std::make_pair(aFanPickup, aPlayer));
 		}
+		// Load TreatsPickup into Level at position on Text File
 		else if (ch == 'O')
 		{
 			TreatsPickup* aTreatPickup = new TreatsPickup();

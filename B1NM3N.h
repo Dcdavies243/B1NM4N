@@ -5,6 +5,7 @@
 #include "Framework/AnimationSystem.h"
 #include "Level.h"
 
+
 class B1NM3N : public MovingObject
 {
 
@@ -27,6 +28,9 @@ private:
 
 	//Private variables (KEEP PRIVATE, NO PUBLIC VARIABLES)
 	bool turned;
+	sf::Sound m_detectSound;
+
+	Player* castPlayer;
 
 	sf::Vector2f m_position;
 

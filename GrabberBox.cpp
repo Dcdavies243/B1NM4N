@@ -13,6 +13,7 @@ GrabberBox::GrabberBox()
 
 void GrabberBox::SetSprite(int _currentLevel)
 {
+	//Set Sprite dependent on level
 	if (_currentLevel == 1)
 	{
 		m_sprite.setTexture(AssetManager::GetTexture("graphics/Level1Grabber.png"));

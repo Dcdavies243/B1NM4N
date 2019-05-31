@@ -10,13 +10,12 @@ FanTarget::FanTarget()
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/Level1FanTarget.png"));
 
-	//TODO: Set up the animation
 
 }
 
 void FanTarget::Remove()
 {
-	
+	//Delete instance of FanTarget
 	m_active = false;
 
 }

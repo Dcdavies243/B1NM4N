@@ -340,3 +340,4 @@ Release/*/*
 !Release/*.dll
 !SFML*/*
 !SFML*/*/*
+*.mp3
