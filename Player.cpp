@@ -174,10 +174,6 @@ void Player::Input()
 
 		m_bottom->SetPosition(m_grabposition + sf::Vector2f(0, -50));
 	}
-	else if (!m_grabbing && sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-	{
-		m_bottom->SetPosition(m_position);
-	}
 
 	if (m_fan && m_offset.y == 30.0f && m_fanSelect && sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
 	{
